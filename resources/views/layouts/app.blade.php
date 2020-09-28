@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="@if(isset($description)) {{$description}} @endif">
     <meta name="csrf-token" content="{{ csrf_token() }}" />
-    <meta name="google-site-verification" content="iWUQsQ7p7WTzrUNnrsIqY64R-Xks8ZLI45y37updLAQ" />
     <link rel="shortcut icon" href="/public/favicon.ico" type="image/x-icon">
     <link rel="canonical" href="http://www.astrorightway.com/" />
     <link rel="icon" href="/public/favicon.ico" type="image/x-icon">
@@ -22,17 +21,6 @@
     <link rel="stylesheet" type="text/css" href="/public/css/template-main.css">
     <link rel="stylesheet" type="text/css" href="/public/css/responsive.css">
     <script type="text/javascript" src="/public/jquery/jquery-3.2.1.min.js"></script>
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-160812913-2"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-    
-      gtag('config', 'UA-160812913-2');
-    </script>
-
-    <script data-ad-client="ca-pub-5277251254166016" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 </head>
 <body>
 
