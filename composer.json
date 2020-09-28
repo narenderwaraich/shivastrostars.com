@@ -14,7 +14,8 @@
         "laravel/tinker": "^1.0",
         "brian2694/laravel-toastr": "^5.5",
         "laravelcollective/html": "^5.2.0",
-        "qcod/laravel-imageup": "^1.0"
+        "qcod/laravel-imageup": "^1.0",
+        "laravel/socialite": "^4.4"
     },
     "require-dev": {
         "beyondcode/laravel-dump-server": "^1.0",

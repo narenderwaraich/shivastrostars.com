@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Socialite;
+use App\BanerSlide;
 
 class LoginController extends Controller
 {
@@ -25,7 +27,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/admin';
 
     /**
      * Create a new controller instance.
@@ -36,4 +38,32 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+
+    /**
+    * Handle Social login request
+    *
+    * @return response
+    */
+   public function socialLogin($social)
+   {
+       return Socialite::driver($social)->redirect();
+   }
+   /**
+    * Obtain the user information from Social Logged in.
+    * @param $social
+    * @return Response
+    */
+   public function handleProviderCallback($social)
+   {
+       $userSocial = Socialite::driver($social)->user();
+       $user = User::where(['email' => $userSocial->getEmail()])->first();
+       if($user){
+           Auth::login($user);
+           return redirect()->action('HomeController@index');
+       }else{
+          $banner = BanerSlide::where('page_name','=','register')->first(); //dd($banner);
+           return view('auth.register',['banner' =>$banner, 'name' => $userSocial->getName(), 'email' => $userSocial->getEmail()]);
+       }
+   }
+
 }
