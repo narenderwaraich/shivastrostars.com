@@ -81,14 +81,13 @@
                 				<div style="position: absolute;top: 29px;left: 95px;">From <span id="city"></span> (<span id="state"></span>)</div>
 
                 	</div>
-                	<select name="astrologer" id="astrologer"  class="input-style form-control {{ $errors->has('astrologer') ? ' is-invalid' : '' }}" required style="margin-bottom: 25px;width: 70%;color: #fff;background: transparent;border: 2px solid #ce2350 !important;">
+                	<select name="astrologer" id="astrologer"  class="input-style form-control {{ $errors->has('astrologer') ? ' is-invalid' : '' }}" required style="margin-bottom: 25px;width: 70%;color: #fff;background: transparent;border: 2px solid #ff9e80 !important;">
                         @if(isset($member))
                              <option value="1">Guru Ji</option>
                         @else 
                         <option value="">--Select Astrologer--</option>   
-                          @foreach($astrologers as $astrologer)
-                              <option value="{{$astrologer->id}}">{{$astrologer->name}}</option>
-                          @endforeach
+                              <option value="">Guru Ji</option>
+  
                         @endif
                     </select>
                     @if ($errors->has('astrologer'))
@@ -97,7 +96,7 @@
 			               </span>
 			        @endif
 			        <p class="full-w" style="color: #fff;width: 70%;margin: auto;font-size: 13px;">if send any file or image choose size (max 2mb)</p>
-			        <input type="file" name="file" class="input-style full-w form-control {{ $errors->has('file') ? ' is-invalid' : '' }}" style="margin-bottom: 30px;width: 70%;color: #fff;background: transparent;border: 2px solid #ce2350 !important;">
+			        <input type="file" name="file" class="input-style full-w form-control {{ $errors->has('file') ? ' is-invalid' : '' }}" style="margin-bottom: 30px;width: 70%;color: #fff;background: transparent;border: 2px solid #ff9e80 !important;">
 			        @if ($errors->has('file'))
 			               <span class="invalid-feedback full-w" role="alert" style="width: 70%;margin-right: auto;margin-left: auto;">
 			                   <strong>{{ $errors->first('file') }}</strong>
@@ -116,24 +115,6 @@
   </div>
 </section>
 
-<div id="startUpModal" class="modal fade">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title">Talk to Astrologer</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-            </div>
-            <div class="modal-body">
-              <iframe width="100%" height="100%" src="https://www.youtube.com/embed/U_X2B5ZzfO8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                <p>Subscribe to our channel</p>
-               <script src="https://apis.google.com/js/platform.js"></script>
-        <div class="g-ytsubscribe" data-channelid="UChU_RSRt7IiqxZTBg577yeQ" data-layout="default" data-count="default"></div>
-            </div>
-        </div>
-    </div>
-</div>
-
-
 
 <style type="text/css">
 	.footer {
@@ -146,10 +127,10 @@ select option {
 }
 
 select option[value="1"] {
-  background: #ce2350;
+  background: #ff9e80;
 }
 .border-px{
-	border:5px solid #ce2350;
+	border:5px solid #ff9e80;
 }
 .reply-msg-status{
 	border: 2px solid #FF8800;
@@ -168,13 +149,6 @@ select option[value="1"] {
 </style>
  <script type="text/javascript" src="/public/jquery/jquery-3.2.1.min.js"></script>
  <script> 
-     $(document).ready(function(){
-        setTimeout(function(){
-            $("#startUpModal").modal('show');
-        }, 5000);
-        
-    });
-
      $(document).ready(function(){
            $('#astrologer').on('change', function() {
               var ID = $(this).val();

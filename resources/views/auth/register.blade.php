@@ -70,35 +70,18 @@
  
         <button type="submit" class="btn btn-style btn-top" >Submit</button>
         <br>
-        <div style="float: left;">Already have account ? <a href="/login" class="login-link">Log in</a>
+        <div style="float: left;color: #fff;">Already have account ? <a href="/login" class="login-link">Log in</a>
         </div>
         </form>
     </div>
 </div>
 </div>
-
-<div id="startUpModal" class="modal fade">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title">How to Register Account</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-            </div>
-            <div class="modal-body">
-              <iframe width="100%" height="100%" src="https://www.youtube.com/embed/bpTzSylho_8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                <p>Subscribe to our channel</p>
-               <script src="https://apis.google.com/js/platform.js"></script>
-        <div class="g-ytsubscribe" data-channelid="UChU_RSRt7IiqxZTBg577yeQ" data-layout="default" data-count="default"></div>
-            </div>
-        </div>
-    </div>
-</div>
 <style>
 .btn-style {
     text-transform: uppercase;
     background: transparent;
-    color: #ce2350;
-    border: 2px solid #ce2350;
+    color: #ff9e80;
+    border: 2px solid #ff9e80;
     margin: auto;
     text-align: center;
     border-radius: 0px;
@@ -114,17 +97,17 @@
 }
 .btn-style:hover {
     color: #ffffff;
-    background-color: #ce2350;
-    border: 2px solid #ce2350;
+    background-color: #ff9e80;
+    border: 2px solid #ff9e80;
 }
 .or-seperator {
     margin: 20px 0 10px;
     text-align: center;
-    border-top: 2px solid #ce2350;
+    border-top: 2px solid #ff9e80;
 }
 .or-seperator i {
     padding: 0 10px;
-    background: #ce2350;
+    background: #ff9e80;
     color: #fff;
     position: relative;
     top: -11px;
@@ -133,14 +116,6 @@
 </style>
 <script src="/public/jquery/jquery-3.2.1.min.js"></script>
 <script>
- $(document).ready(function(){
-        setTimeout(function(){
-            $("#startUpModal").modal('show');
-        }, 5000);
-        
-    });
-    
-
 $(".toggle-password").click(function() {
 $(this).toggleClass("fa-eye-slash fa-eye");
 var input = $($(this).attr("toggle"));

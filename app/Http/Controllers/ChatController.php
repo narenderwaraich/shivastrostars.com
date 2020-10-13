@@ -17,7 +17,6 @@ use App\Order;
 use App\Contact;
 use App\UserPlan;
 use App\Astrologer;
-use App\MemberJoin;
 use Mail;
 use App\Mail\MessageNotification;
 use App\Mail\ChatReply;
@@ -46,15 +45,9 @@ class ChatController extends Controller
                 $title = $banner->title;
                 $description = $banner->description;
             }
-            $astrologers = Astrologer::where('verified','=',2)->get(); //dd($astrologers);
+            // $astrologers = Astrologer::where('verified','=',2)->get(); //dd($astrologers);
             $messages = Chat::where('user_id',Auth::id())->orderBy('created_at','desc')->get(); //dd($messages);
-            $member = MemberJoin::where('user_id',Auth::id())->where('status','=',1)->first();
-            $deactiveMember = MemberJoin::where('user_id',Auth::id())->where('status','=',0)->first();
-            if($deactiveMember){
-                Toastr::error('Your Member Fee Pending Please Pay Now', 'Error', ["positionClass" => "toast-top-right"]);
-                return redirect()->to('/join-member/pay/payment');
-            }
-            return view('chat',compact('title','description','banner','messages','astrologers','member'));
+            return view('chat',compact('title','description','banner','messages'));
     }
 
     /**

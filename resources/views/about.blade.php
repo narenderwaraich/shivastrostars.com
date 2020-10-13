@@ -34,7 +34,7 @@
           <img src="/public/images/section/about-us-img.jpg" alt="Pandit" class="icon-img2">
         </div>
         <div class="col-md-6 pad-in-section">
-          <div class="heading-title heading-text heading-color">Know About AstroRightWay</div>
+          <div class="heading-title heading-text heading-color">Know About ShivAstroStars</div>
           <br>
           <p><strong>|| हरि ॐ नमो वासुदेवाय ||</strong>
             <br><br>
@@ -50,9 +50,9 @@
     <section class="about-sec2 section-top section-bottom">
       <div class="row">
         <div class="col-md-6 col-md-pull-6 pad-in-section">
-          <div class="heading-title heading-text heading-color">Services of AstroRightWay</div>
+          <div class="heading-title heading-text heading-color">Services of ShivAstroStars</div>
           <br>
-          <b>We Offer Services</b>
+          <b style="color: #fff;">We Offer Services</b>
           <br>
           <ul class="service-list">
             <li>Get your love back</li>

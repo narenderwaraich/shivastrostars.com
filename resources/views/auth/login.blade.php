@@ -30,7 +30,7 @@
         Log In
     </div>
     <div class="windows-form">
-        <a href="{{ url('auth/google') }}" class="btn btn-style btn-lg btn-block">
+        <a href="#" class="btn btn-style btn-lg btn-block">
           <strong>Login With Google</strong>
         </a>
         <div class="or-seperator"><i>or</i></div> 
@@ -59,7 +59,7 @@
             </p>
             <button type="submit" class="btn btn-style btn-top" >Submit</button>
             <br>
-            <div style="float: left;">Don't have account ? <a href="/register" class="sign-up-link">Register here</a></div>
+            <div style="float: left;color: #fff;">Don't have account ? <a href="/register" class="sign-up-link">Register here</a></div>
         </form>
     </div>
 </div>
@@ -68,8 +68,8 @@
 .btn-style {
     text-transform: uppercase;
     background: transparent;
-    color: #ce2350;
-    border: 2px solid #ce2350;
+    color: #ff9e80;
+    border: 2px solid #ff9e80;
     margin: auto;
     text-align: center;
     border-radius: 0px;
@@ -85,17 +85,17 @@
 }
 .btn-style:hover {
     color: #ffffff;
-    background-color: #ce2350;
-    border: 2px solid #ce2350;
+    background-color: #ff9e80;
+    border: 2px solid #ff9e80;
 }
 .or-seperator {
     margin: 20px 0 10px;
     text-align: center;
-    border-top: 2px solid #ce2350;
+    border-top: 2px solid #ff9e80;
 }
 .or-seperator i {
     padding: 0 10px;
-    background: #ce2350;
+    background: #ff9e80;
     color: #fff;
     position: relative;
     top: -11px;

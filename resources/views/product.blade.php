@@ -28,7 +28,7 @@
 
 
 	<!-- Content page -->
-	<section class="bgwhite m-t-70">
+	<section class="m-t-70">
 		<div class="container">
 			<div class="row">
 				<div class="col-sm-6 col-md-4 col-lg-3 p-b-50">

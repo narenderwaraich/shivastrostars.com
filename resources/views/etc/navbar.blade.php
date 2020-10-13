@@ -4,11 +4,13 @@
         <div class="container-menu-header">
             
 
-            <div class="wrap_header navbar_background_color">
+            <div class="wrap_header header-bg">
                 <!-- Logo -->
                 <a href="/" class="logo" aria-label="home">
-                    <img src="/public/images/icons/logo.png" alt="web-logo">
+                    <!-- <img src="/public/images/icons/Logo.svg" alt="web-logo"> -->
+                    ShivAstroStars
                 </a>
+                
 
                 <!-- Menu -->
                 <div class="wrap_menu">
@@ -32,12 +34,12 @@
                                 </ul>
                             </li> -->
 
-                            <li class="{{ (request()->is('gallery')) ? 'active' : '' }}">
+                            <!-- <li class="{{ (request()->is('gallery')) ? 'active' : '' }}">
                                 <a href="/gallery">Gallery</a>
                             </li>
                             <li class="{{ (request()->is('youtube-videos')) ? 'active' : '' }}">
                                 <a href="/youtube-videos">Videos</a>
-                            </li>
+                            </li> -->
 
                             <!-- <li>
                                 <a href="/blog">Ask to Astrologe</a>
@@ -172,7 +174,8 @@
         <div class="wrap_header_mobile">
             <!-- Logo moblie -->
             <a href="/" class="logo-mobile">
-                <img src="/public/images/icons/logo.png" alt="moblie-web-logo">
+                <!-- <img src="/public/images/icons/Logo.svg" alt="moblie-web-logo"> -->
+                ShivAstroStars
             </a>
 
             <!-- Button show menu -->
@@ -302,13 +305,13 @@
                         <a href="/product">Products</a>
                     </li>
 
-                    <li class="item-menu-mobile {{ (request()->is('gallery')) ? 'active' : '' }}">
+                    <!-- <li class="item-menu-mobile {{ (request()->is('gallery')) ? 'active' : '' }}">
                         <a href="/gallery">Gallery</a>
                     </li>
 
                     <li class="item-menu-mobile {{ (request()->is('youtube-videos')) ? 'active' : '' }}">
                         <a href="/youtube-videos">Videos</a>
-                    </li>
+                    </li> -->
                     <li class="item-menu-mobile {{ (request()->is('talk-astro')) ? 'active' : '' }}">
                                 <a href="/talk-astro">Talk Astro</a>
                     </li>
