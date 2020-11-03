@@ -1,210 +1,315 @@
 @extends('layouts.app')
 @section('content') 
 
-<!-- Slider Section -->
-<section class="home-slider">
-    <div id="home-slider" class="carousel slide" data-ride="carousel">
-
-        <!-- The slideshow -->
-        <div class="carousel-inner">
-            @foreach($bannerSlide as $key => $slide)
-            <div class="carousel-item {{ $key == 0 ? 'active':'' }} ">
-                @if($slide->heading)
-                <div class="slide-imge-overlay"></div>
-                @endif
-                <img src="{{asset('/public/images/banner/'.$slide->image)}}" alt="{{$slide->heading}}">
-                <div class="caption">
-                    <div class="container">
-                        @if($slide->heading)
-                        <div class="caption-in">
-                            <div class="caption-ins">
-                                <h1 class="text-up">{{$slide->heading}}<span>{{$slide->sub_heading}}</span></h1>
-                                @if($slide->button_text)
-                                <div class="links"> 
-                                    <a href="{{$slide->button_link}}" class="btns slider-btn"><span>{{$slide->button_text}}</span></a> 
-                                </div>
-                                @endif
-                            </div>
-                        </div>
-                        @endif
-                    </div>
+<!-- MAIN -->
+    <main>    
+      <!-- Main Header -->
+      <header>
+        <div class="carousel-default owl-carousel carousel-main carousel-nav-white background-dark text-center">
+          <div class="item">
+            <div class="col-sm-12 p-l-0 p-r-0">
+              <img src="/images/bg/header.jpg" alt="">
+              <div class="carousel-content">
+                <div class="content-center-vertical">
+                  <div class="m-t-b-80">
+                    <!-- Banner Title -->
+                    <h1 class="text-white m-b-30 fs-60 text-m-size-30">Banner Heading<br> Text</h1>
+                    <div class="col-sm-12 col-md-10 col-lg-8 center"><p class="text-white fs-14 m-b-40">Banner content here..</p></div>
+                    <div class="">
+                      <div class="col-sm-12 col-md-12 col-lg-3 center">
+                        <a class="btn banner-btn col-sm-12" href="/">Get Started Now</a>
+                      </div>       
+                    </div>  
+                  </div>
                 </div>
+              </div>
             </div>
-            @endforeach
+          </div>              
+        </div>               
+      </header>
+
+      <section class="section-top-padding product-section container">
+        <h2 class="fs-50 text-center">Our Products</h2>
+        <hr class="under-line">
+        <div class="row">
+
+          <div class="col-md-4 mb-cols">
+            <div class="product-div">
+              <a href="">
+                <img src="" alt="">
+              </a>
+              <a href="">
+                <h2 class="m-t-20"></h2>
+              </a>
+                <p class="product-price"></p>
+              <button type="button" class="btn secondary_btn mt40 add-on-cart" addid="">Add to Cart</button>
+            </div>
+          </div>
+
+      </div>
+      </section>
+
+          <section>
+        <div class="parallax-container" id="para_sec">
+           <div class="row">
+               <div class="col-md-6">
+                   <div class="offer-section">
+                       <div class="top-tile">
+                            Offer
+                       </div>
+                       <div class="content">
+                           <p>First user for special offer get 20% discount on first order.
+                            Register Now or apply <span>GET20</span> Coupan Voucher Code.
+                           </p>
+                       </div>
+                   </div>
+               </div>
+               <div class="col-md-6">
+    <div class="form-box-sec">
+        <div class="top-tile">
+            Register
         </div>
+        <form method="POST" action="" class="parallax-form" autocomplete="off">
+            <!-- @csrf -->
 
-        <!-- Left and right controls -->
-        <a class="carousel-control-prev" href="#home-slider" aria-label="slide-next-btn" data-slide="prev">
-            <span class="fa fa-angle-left"></span>
-        </a>
-        <a class="carousel-control-next" href="#home-slider" aria-label="slide-back-btn" data-slide="next">
-            <span class="fa fa-angle-right"></span>
-        </a>
+            <label for="fname" class="dis-none">FName</label>
+            <input  type="text" id="fname" class="form-box-input form-control" name="name" value="" placeholder="Name" required>
+
+            <!-- @if ($errors->has('name'))
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $errors->first('name') }}</strong>
+                </span>
+            @endif -->
+            <label for="eaddress" class="dis-none">EAddress</label>
+            <input type="email" id="eaddress" class="form-box-input form-control" name="email" value="" placeholder="Email" required>
+
+            <!-- @if ($errors->has('email'))
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $errors->first('email') }}</strong>
+                </span>
+            @endif -->
+            <label for="password" class="dis-none">Password</label>
+            <input id="password" type="password" class="form-box-input form-control" name="password" placeholder="Password" required>
+
+            <!-- @if ($errors->has('password'))
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $errors->first('password') }}</strong>
+                </span>
+            @endif -->
+
+            <label class="dis-none" for="phone">Phone</label>
+            <input id="phone" type="number" class="form-box-input form-control" name="phone_no" placeholder="Phone">
+            <select name="gender" id="select" required class="form-box-input form-control " style="height: 50px;">
+              <option value="">-- Select Gender--</option>    
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+            </select>
+ 
+        <button type="submit" class="btn btn-style btn-top" >Submit</button>
+        </form>
     </div>
-</section>
-
-<!-- Daily Rashi Section -->
-<!--  @if(isset($rashi))
-@foreach($rashi as $todayRashi)
-    <section class="daily-rashi-section section-top container">
-        <h1 class="section-heading-txt heading-color text-center">आज का राशिफल</h1>
-            <div class="today-date">{{ date('l, d/m/Y', strtotime($todayRashi->today_date)) }}</div>
-            <p class="rashi-sub-heading">कैसा रहेगा आज का दिन आपके लिए? क्या कहते हैं आज के सितारे?</p>
-        <div class="row m-t-30">
-            <div class="col-sm-12 col-md-8 col-lg-9">
-
-                <div class="row">
-                   <div class="col-auto">
-                    <a href="/today-rashifal/mesh">
-                       <div class="rashi-box">
-                           <div class="rashi-name">मेष</div>
-                       </div>
-                     </a>
-                   </div>
-                   <div class="col-auto">
-                    <a href="/today-rashifal/vrishabh">
-                       <div class="rashi-box">
-                           <div class="rashi-name">वृषभ</div>
-                       </div>
-                     </a>
-                   </div>
-                   <div class="col-auto">
-                    <a href="/today-rashifal/mithun">
-                       <div class="rashi-box">
-                           <div class="rashi-name">मिथुन</div>
-                       </div>
-                     </a>
-                   </div>
-                   <div class="col-auto">
-                    <a href="/today-rashifal/kark">
-                       <div class="rashi-box">
-                           <div class="rashi-name">कर्क</div>
-                       </div>
-                     </a>
-                   </div>
-                   <div class="col-auto">
-                    <a href="/today-rashifal/simha">
-                       <div class="rashi-box">
-                           <div class="rashi-name">सिंह</div>
-                       </div>
-                     </a>
-                   </div>
-                   <div class="col-auto">
-                    <a href="/today-rashifal/kanya">
-                       <div class="rashi-box">
-                           <div class="rashi-name">कन्या</div>
-                       </div>
-                     </a>
-                   </div>
-                   <div class="col-auto">
-                    <a href="/today-rashifal/tula">
-                       <div class="rashi-box">
-                           <div class="rashi-name">तुला</div>
-                       </div>
-                     </a>
-                   </div>
-                   <div class="col-auto">
-                    <a href="/today-rashifal/vrishchik">
-                       <div class="rashi-box">
-                           <div class="rashi-name">वृश्चिक</div>
-                       </div>
-                     </a>
-                   </div>
-                   <div class="col-auto">
-                    <a href="/today-rashifal/dhanu">
-                       <div class="rashi-box">
-                           <div class="rashi-name">धनु</div>
-                       </div>
-                     </a>
-                   </div>
-                   <div class="col-auto">
-                    <a href="/today-rashifal/makar">
-                       <div class="rashi-box">
-                           <div class="rashi-name">मकर</div>
-                       </div>
-                     </a>
-                   </div>
-                   <div class="col-auto">
-                    <a href="/today-rashifal/kumbh">
-                       <div class="rashi-box">
-                           <div class="rashi-name">कुंभ</div>
-                       </div>
-                     </a>
-                   </div>
-                   <div class="col-auto">
-                    <a href="/today-rashifal/meen">
-                       <div class="rashi-box">
-                           <div class="rashi-name">मीन</div>
-                       </div>
-                     </a>
-                   </div>
-               </div> 
-            </div>
-            <div class="col-sm-12 col-md-4 col-lg-3">
-              <iframe width="100%" height="100%" src="https://www.youtube.com/embed/bpTzSylho_8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="margin-top: 20px;"></iframe>
-              <script src="https://apis.google.com/js/platform.js"></script>
-        <div class="g-ytsubscribe" data-channelid="UChU_RSRt7IiqxZTBg577yeQ" data-layout="default" data-count="default"></div>
-            </div>
+               </div>
+           </div>
         </div>
     </section>
-  @endforeach 
-@endif-->
 
-    <!-- Product Show Section Start -->
-
-    <section class="programs-section section-top container">
-      <h1 class="section-heading-txt heading-color text-center">Products</h1>
-      <div class="row m-t-50">
-        @foreach($products->take(6) as $product)
-        <div class="col-md-4 mb-cols">
-          <div class="product-view-window-div {{ ($product->product_types_id ==2) ? 'block2-labelnew' : '' }} {{ ($product->product_types_id ==1) ? 'block2-labelsale' : '' }}" style="background-image: url(/public/images/products/{{$product->image}});">
-              <div class="slide-imge-overlay"></div>
-            <div class="product-content">
-                <a href="/product-details/{{$product->id}}"><h2 class="m-top heading-color2">{{$product->name}}</h2></a>
-                <br>
-                <p class="offer-text">₹{{$product->price}}</p>
-                <button type="button" class="btn secondary_btn mt40 add-on-cart" addId="{{ $product->id }}">Add to Cart</button>
+    <section class="section-top-padding astrologer-section container bgwhite text-center">
+        <div class="">
+          <h2 class="fs-50 text-center">Our Astrologers</h2>
+          <hr class="under-line">
+          <div class="carousel-default owl-carousel carousel-wide-arrows">
+            <div class="item">
+              <div class="col-sm-12 col-md-12 col-lg-12 center text-center">
+                <img class="image-testimonial-small" src="" alt="">
+                <p class="astro-desc margin-bottom fs-20">Astrologer Description</p>
+                <p class="astro-postion fs-16">Astrologer</p>
+              </div>
+            </div>
+            <div class="item"> 
+              <div class="col-sm-12 col-md-12 col-lg-12 center text-center">
+                <img class="image-testimonial-small" src="img/testimonials-05.png" alt="">
+                <p class="astro-desc margin-bottom fs-20">Astrologer Description</p>
+                <p class="astro-postion fs-16">Astrologer</h5>
+              </div>
             </div>
           </div>
         </div>
-        @endforeach
-      </div>
-      <a href="/product" class="btn btn-style on-mob-bottom-30" style="margin-top: 20px;width:150px !important;">View More</a>
-<!--     <div class="row m-t-50">
-        <div class="col-sm-12 col-md-12 col-lg-12">
-            <div class="row">
-            @foreach($products as $product)
-                <div class="col-sm-6 col-md-4 col-lg-4 p-b-50">
-                    <div class="product-block">
-                        <div class="block2-img wrap-pic-w of-hidden pos-relative {{ ($product->product_types_id ==2) ? 'block2-labelnew' : '' }} {{ ($product->product_types_id ==1) ? 'block2-labelsale' : '' }}">
-                            <img src="{{asset('/public/images/products/'.$product->image)}}" alt="{{$product->name}}">
-                            <div class="block2-overlay trans-0-4">
-                                <div class="block2-btn-addcart w-size1 trans-0-4">
-                                    <button class="flex-c-m trans-0-4 btn secondary_btn mt40 add-on-cart" addId="{{ $product->id }}">
-                                        Add to Cart
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="product-content p-t-20">
-                            <a href="/product-details/{{$product->id}}" class="dis-block p-b-5">
-                                <div class="title">{{$product->name}}</div>
-                            </a>
-                            <span class="product-price-txt">
-                                ₹{{$product->price}}
-                            </span>
-                        </div>
-                    </div>
-                </div>
-                @endforeach
-            </div>
-        </div>
-        <!--<div class="col-sm-12 col-md-4 col-lg-3">-->
-               
-        <!--</div>-->
-    </div>
+      </section>
 
+  
+      <section class="section-top-padding container-fluid">
+        <h2 class="fs-50 text-center">Our Gallery</h2>
+        <hr class="under-line">
+        <!-- Nav tabs -->
+          <ul class="nav nav-tabs">
+            <li class="nav-item">
+              <a class="nav-link active" data-toggle="tab" href="#profile">Product</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" data-toggle="tab" href="#chat">Chat</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" data-toggle="tab" href="#kundli">Kundli</a>
+            </li>
+          </ul>
+                <div class="tab-content">
+                  <div id="profile" class="tab-pane active">
+                  <div class="row">
+                  <div class="col-sm-12 col-md-6 col-lg-3 pad-l-r-0">
+                  <a class="image-with-hover-overlay image-hover-zoom" href="img/portfolio/portfolio-02.jpg">
+                    <div class="image-hover-overlay background-primary"> 
+                      <div class="image-hover-overlay-content text-center padding-2x">
+                        <h2 class="text-thin">Lorem Ipsum Dolor</h2> 
+                        <p>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis. Autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis.</p> 
+                      </div> 
+                    </div> 
+                    <img src="img/portfolio/thumb-02.jpg" alt="" title="Portfolio Image 1" />
+                  </a>  
+                </div>
+                <div class="col-sm-12 col-md-6 col-lg-3 pad-l-r-0">
+                  <a class="image-with-hover-overlay image-hover-zoom" href="img/portfolio/video.mp4">
+                    <div class="image-hover-overlay background-primary"> 
+                      <div class="image-hover-overlay-content text-center padding-2x">
+                        <h2 class="text-thin">Lorem Ipsum Dolor</h2> 
+                        <p>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis. Autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis.</p> 
+                      </div> 
+                    </div> 
+                    <img src="img/portfolio/thumb-09.jpg" alt="" title="Portfolio Image 2" />
+                  </a>  
+                </div>
+                <div class="col-sm-12 col-md-6 col-lg-3 pad-l-r-0">
+                  <a class="image-with-hover-overlay image-hover-zoom" href="img/portfolio/portfolio-08.jpg">
+                    <div class="image-hover-overlay background-primary"> 
+                      <div class="image-hover-overlay-content text-center padding-2x">
+                        <h2 class="text-thin">Lorem Ipsum Dolor</h2> 
+                        <p>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis. Autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis.</p> 
+                      </div> 
+                    </div> 
+                    <img src="img/portfolio/thumb-08.jpg" alt="" title="Portfolio Image 3" />
+                  </a>  
+                </div>
+                <div class="col-sm-12 col-md-6 col-lg-3 pad-l-r-0">
+                  <a class="image-with-hover-overlay image-hover-zoom" href="img/portfolio/portfolio-05.jpg">
+                    <div class="image-hover-overlay background-primary"> 
+                      <div class="image-hover-overlay-content text-center padding-2x">
+                        <h2 class="text-thin">Lorem Ipsum Dolor</h2> 
+                        <p>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis. Autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis.</p> 
+                      </div> 
+                    </div> 
+                    <img src="img/portfolio/thumb-05.jpg" alt="" title="Portfolio Image 4" />
+                  </a>  
+                </div>
+                </div>
+                </div>
+
+
+                <div id="chat" class="tab-pane">
+                  <div class="row">
+                  <div class="col-sm-12 col-md-6 col-lg-3 pad-l-r-0">
+                  <a class="image-with-hover-overlay image-hover-zoom" href="img/portfolio/portfolio-07.jpg">
+                    <div class="image-hover-overlay background-primary"> 
+                      <div class="image-hover-overlay-content text-center padding-2x">
+                        <h2 class="text-thin">Lorem Ipsum Dolor</h2> 
+                        <p>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis. Autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis.</p> 
+                      </div> 
+                    </div> 
+                    <img src="img/portfolio/thumb-07.jpg" alt="" title="Portfolio Image 13" />
+                  </a>  
+                </div>
+                <div class="col-sm-12 col-md-6 col-lg-3 pad-l-r-0">
+                  <a class="image-with-hover-overlay image-hover-zoom" href="img/portfolio/portfolio-13.jpg">
+                    <div class="image-hover-overlay background-primary"> 
+                      <div class="image-hover-overlay-content text-center padding-2x">
+                        <h2 class="text-thin">Lorem Ipsum Dolor</h2> 
+                        <p>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis. Autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis.</p> 
+                      </div> 
+                    </div> 
+                    <img src="img/portfolio/thumb-13.jpg" alt="" title="Portfolio Image 14" />
+                  </a>  
+                </div>
+                <div class="col-sm-12 col-md-6 col-lg-3 pad-l-r-0">
+                  <a class="image-with-hover-overlay image-hover-zoom" href="img/portfolio/video.mp4">
+                    <div class="image-hover-overlay background-primary"> 
+                      <div class="image-hover-overlay-content text-center padding-2x">
+                        <h2 class="text-thin">Lorem Ipsum Dolor</h2> 
+                        <p>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis. Autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis.</p> 
+                      </div> 
+                    </div> 
+                    <img src="img/portfolio/thumb-11.jpg" alt="" title="Portfolio Image 15" />
+                  </a>  
+                </div>
+                <div class="col-sm-12 col-md-6 col-lg-3 pad-l-r-0">
+                  <a class="image-with-hover-overlay image-hover-zoom" href="img/portfolio/portfolio-04.jpg">
+                    <div class="image-hover-overlay background-primary"> 
+                      <div class="image-hover-overlay-content text-center padding-2x">
+                        <h2 class="text-thin">Lorem Ipsum Dolor</h2> 
+                        <p>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis. Autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis.</p> 
+                      </div> 
+                    </div> 
+                    <img src="img/portfolio/thumb-04.jpg" alt="" title="Portfolio Image 16" />
+                  </a>  
+                </div>
+                  </div>
+                </div>
+
+              <div id="kundli" class="tab-pane">
+              </div>
+              </div>
+      </section>
+
+        <section class="blog bgwhite section-top-padding">
+        <div class="container">
+            <h2 class="fs-50 text-center">Our Videos</h2>
+            <hr class="under-line">
+            <div class="row">
+                <div class="col-sm-10 col-md-4 p-b-30 m-l-r-auto">
+
+                    <iframe width="100%" height="100%" src="https://www.youtube.com/embed/keIrUBONCfM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>  
+
+                    <div class="block3-txt p-t-14">
+                        <div class="video-heading-title p-b-7">
+                                अपने बारे कुंडली दिखाकर कुछ भी पूछिए और कमाइए पैसे
+                        </div>
+
+                        <span class="s-text6">By</span> <span class="s-text7">Pandit Manik Bhardwaj Shashtri Ji</span>
+                        <span class="s-text6">on</span> <span class="s-text7">12 Jul, 2020</span>
+                    </div>
+                    
+                </div>
+                             <div class="col-sm-10 col-md-4 p-b-30 m-l-r-auto">
+
+                        <iframe width="100%" height="100%" src="https://www.youtube.com/embed/U_X2B5ZzfO8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>  
+
+                        <div class="block3-txt p-t-14">
+                            <div class="video-heading-title p-b-7">
+                                    How to talk with Astrologers
+                            </div>
+
+                            <span class="s-text6">By</span> <span class="s-text7">Narender Waraich</span>
+                            <span class="s-text6">on</span> <span class="s-text7">21 Jun, 2020</span>
+                        </div>
+                    
+                </div>
+                             <div class="col-sm-10 col-md-4 p-b-30 m-l-r-auto">
+
+                        <iframe width="100%" height="100%" src="https://www.youtube.com/embed/bpTzSylho_8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>  
+
+                        <div class="block3-txt p-t-14">
+                            <div class="video-heading-title p-b-7">
+                                    How to Register Account
+                            </div>
+
+                            <span class="s-text6">By</span> <span class="s-text7">Narender Waraich</span>
+                            <span class="s-text6">on</span> <span class="s-text7">21 Jun, 2020</span>
+                        </div>
+                    
+                </div>
+                         </div>
+            <a href="/youtube-videos" class="btn btn-style on-mob-bottom-30" style="margin-top: 20px;width:150px !important;">View More</a>
+        </div>
     </section>
+      
+  </main>
 
 
  <script type="text/javascript" src="/public/jquery/jquery-3.2.1.min.js"></script>
@@ -247,9 +352,7 @@
                 });
             });
 
-        // Nothing new here...it's all in the CSS!
-    var scene = document.getElementById('para_sec');
-    var parallax = new Parallax(scene);
+
             
 </script>
  @endsection

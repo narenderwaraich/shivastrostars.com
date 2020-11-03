@@ -1,3 +1,12 @@
+.pad-l-r-10{
+	padding-left: 10px;
+	padding-right: 10px;
+}
+.m-t-b-40{
+	margin-top: 40px;
+	margin-bottom: 40px;
+}
+
 /*[ font size ]
 ///////////////////////////////////////////
 */
@@ -2349,7 +2358,9 @@
 .bgwhite {background-color: white;}
 .bgblack {background-color: black;}
 
-
+.background-transparent {
+    background: none;
+}
 
 /*[ Wrap Picture ]
 ---------------------------------------
@@ -4017,7 +4028,9 @@ EFFECT
     background-color: rgba(0,0,0,0.2);
 }
 
-
+.right {
+    float: right;
+}
 
 
 

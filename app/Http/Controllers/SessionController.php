@@ -26,6 +26,9 @@ class SessionController extends Controller
         if (isset($banner)) {
             $title = $banner->title;
             $description = $banner->description;
+        }else{
+            $title ="Login";
+            $description = "user login with our email";
         }
         return view('auth.login',compact('title','description'),['banner' =>$banner]);
         }

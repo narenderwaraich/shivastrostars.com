@@ -8,18 +8,17 @@
     <meta name="csrf-token" content="{{ csrf_token() }}" />
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" type="text/css" href="/public/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="/public/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="/public/fonts/themify/themify-icons.css">
-    <link rel="stylesheet" type="text/css" href="/public/fonts/elegant-font/html-css/style.css">
-    <link rel="stylesheet" type="text/css" href="/public/css-hamburgers/hamburgers.css">
-    <link rel="stylesheet" href="/public/css/toastr.min.css">
-    <link rel="stylesheet" type="text/css" href="/public/slick/slick.css">
-    <link rel="stylesheet" type="text/css" href="/public/css/design.css">
-    <link rel="stylesheet" type="text/css" href="/public/css/custom.css">
-    <link rel="stylesheet" type="text/css" href="/public/css/template-main.css">
-    <link rel="stylesheet" type="text/css" href="/public/css/responsive.css">
-    <script type="text/javascript" src="/public/jquery/jquery-3.2.1.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/owl-carousel/owl.carousel.css">
+    <link rel="stylesheet" href="/owl-carousel/owl.theme.css">
+    <link rel="stylesheet" type="text/css" href="/slick/slick.css">    
+    <link rel="stylesheet" type="text/css" href="/css/design.css">
+    <link rel="stylesheet" type="text/css" href="/css/responsive.css">
+    <link rel="stylesheet" href="/css/toastr.min.css">
+    <script type="text/javascript" src="jquery/jquery-3.2.1.min.js"></script>
 </head>
 <body>
 
@@ -39,15 +38,14 @@
     </div>
 
 @include('etc.footer')
-    <script type="text/javascript" src="/public/bootstrap/js/popper.js"></script>
-    <script type="text/javascript" src="/public/bootstrap/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="/public/slick/slick.min.js"></script>
-    <script type="text/javascript" src="/public/js/slick-custom.js"></script>
-    <!-- <script type="text/javascript" src="/countdowntime/countdowntime.js"></script> -->
-    <script src="/public/js/template-main.js"></script>
-    <script src="/public/js/toastr.min.js"></script>
-    <script src="/public/js/custom.js"></script>
-
+    <script type="text/javascript" src="/bootstrap/js/popper.js"></script>
+    <script type="text/javascript" src="/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/slick/slick.min.js"></script>
+    <script type="text/javascript" src="/js/slick-custom.js"></script>
+    <script src="/js/parallax.js"></script>
+    <script type="text/javascript" src="/owl-carousel/owl.carousel.js"></script>
+    <script type="text/javascript" src="/js/custom.js"></script>
+    <script src="/js/toastr.min.js"></script>
     {!! Toastr::message() !!}
 </body>
 </html>
