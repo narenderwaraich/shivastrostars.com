@@ -22,10 +22,7 @@ use App\BanerSlide;
 use App\Page;
 use App\Chat;
 use App\Payment;
-use App\DirectPayment;
-use App\MemberPayment;
 use App\UserAddress;
-use App\MemberJoin;
 use App\UserPlan;
 use App\AstrologerPayment;
 use App\Astrologer;
@@ -59,17 +56,13 @@ class AdminController extends Controller
                      ->orderBy('month','asc')
                      ->get();
                      //dd($userData);
-                $member = MemberJoin::where('id', '!=', 1)->where('status', '=', 1)->count();
-                $deActiveMember = MemberJoin::where('id', '!=', 1)->where('status', '=', 0)->count();
-                $totalMember = MemberJoin::where('id', '!=', 1)->count();
-                $totalProfit = Payment::where('transaction_status','=','Success')->sum('amount');
-                $directPayment = DirectPayment::where('transaction_status','=','Success')->sum('amount');
-                $memberPayment = MemberPayment::where('transaction_status','=','Success')->sum('amount');
-                $totalCollectPayment = $totalProfit + $memberPayment;
+                
+                //$totalProfit = Payment::where('transaction_status','=','Success')->sum('amount');
+                //$totalCollectPayment = $totalProfit;
 
-                $activeAstrologer = Astrologer::where('verified', '=', 2)->count();
-                $deActiveAstrologer = Astrologer::where('verified', '=', 1)->count();
-                $totalAstrologer = Astrologer::all()->count();
+                //$activeAstrologer = Astrologer::where('verified', '=', 2)->count();
+                //$deActiveAstrologer = Astrologer::where('verified', '=', 1)->count();
+                //$totalAstrologer = Astrologer::all()->count();
 
                 // //// all members
                 // $members = MemberJoin::where('status', '=', 1)->get();
@@ -77,7 +70,7 @@ class AdminController extends Controller
                 //   $memberData->down_member_join = MemberJoin::where('refer_code','=', $memberData->member_code)->get();
                 // }
                 $totalMessage = Chat::All()->count();
-                return view('Admin.index',compact('getOrders','contacts','chats','totalUser','activeUser','newUser','userData','deActiveUser','totalProfit','directPayment','memberPayment','member','deActiveMember','totalMember', 'totalCollectPayment','totalMessage','activeAstrologer','deActiveAstrologer','totalAstrologer'));
+                return view('Admin.index',compact('getOrders','contacts','chats','totalUser','activeUser','newUser','userData','deActiveUser'));
             }else{
                 // message
                 return redirect('/login');

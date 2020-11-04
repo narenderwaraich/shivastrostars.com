@@ -3,7 +3,7 @@
 
     <section class="content-wrapper" style="min-height: 960px;">
         <section class="content-header">
-            <h1>Today Rashifal</h1>
+            <h1>Section Image</h1>
         </section>
 
         <section class="content">
@@ -16,12 +16,11 @@
 
                         <div class="box-body">
                             <div class="btn-group">
-                                <a href="/today-rashi/create" class="btn btn-success btn-sm">
+                               <a href="/section-image/create" class="btn btn-success btn-sm">
                                     <i class="fa fa-plus"></i> Add new
                                 </a>
                                 <button type="button" class="btn btn-default btn-sm" onClick="refreshPage()">
-                                    <i class="fa fa-refresh"></i> Refresh
-                                </button>
+<i class="fa fa-refresh"></i> Refresh</button>
                             </div>
                         </div>
 
@@ -30,30 +29,38 @@
                                 <thead>
                                 <tr>
                                     <th>ID</th>
-                                    <th>Day</th>
-                                    <th>Date</th>
-                                    <th>Write By</th>
+                                    <th>Page</th>
+                                    <th>Section</th>
+                                    <th>Image</th>
                                     <th>Actions</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($rashifal as $rashifalData)
+                                   @foreach ($pageSetup as $pageSetupData)
                                     <tr>
-                                        <td>{{ $rashifalData->id }}</td>
-                                        <td>{{ date('l', strtotime($rashifalData->today_date)) }}</td>
-                                        <td>{{ date('d/m/Y', strtotime($rashifalData->today_date)) }}</td>
-                                        <td>{{ $rashifalData->write_by }}</td>
-                                        <td><a href="/today-rashi/edit/{{ $rashifalData->id }}" class="btn btn-secondary">Edit</a>
-                                        <a onclick="return removeAlert();" href="/today-rashi/delete/{{ $rashifalData->id }}" class="btn btn-danger on-mob-table-btn">Delete</a>
-                                        </td>
+                                        <td>{{ $pageSetupData->id }}</td>
+                                        <td>{{ $pageSetupData->page_name }}</td>
+                                        <td>{{ $pageSetupData->section }}</td>
+                                        <td><img src="/public/images/bg/{{ $pageSetupData->bg_img }}" class="bannerShowImg"></td>
+                                       <td><a href="/section-image/edit/{{ $pageSetupData->id }}" class="btn btn-secondary">Edit</a>
+                                        <a onclick="return removeAlert();" href="/section-image/delete/{{ $pageSetupData->id }}" class="btn btn-danger on-mob-table-btn">Delete</a>
                                     </tr>
                                     @endforeach
                                 </tbody>
                             </table>
-                            {!! $rashifal->links() !!} 
+                            {!! $pageSetup->links() !!}
+
+                            
                         </div>
                     </div>
                 </div>
             </div>
         </section>
+    </section>
 @endsection
+<style scoped>
+    .bannerShowImg{
+        height: 100px;
+        width:  auto;
+    }
+</style>

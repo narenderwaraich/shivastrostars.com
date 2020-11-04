@@ -4,22 +4,27 @@
 <!-- MAIN -->
     <main>    
       <!-- Main Header -->
+      @if(isset($banner))
       <header>
         <div class="carousel-default owl-carousel carousel-main carousel-nav-white background-dark text-center">
           <div class="item">
             <div class="col-sm-12 p-l-0 p-r-0">
-              <img src="/images/bg/header.jpg" alt="">
+              <img src="{{asset('/public/images/banner/'.$banner->image)}}" alt="{{$banner->heading}}">
               <div class="carousel-content">
                 <div class="content-center-vertical">
                   <div class="m-t-b-80">
                     <!-- Banner Title -->
-                    <h1 class="text-white m-b-30 fs-60 text-m-size-30">Banner Heading<br> Text</h1>
-                    <div class="col-sm-12 col-md-10 col-lg-8 center"><p class="text-white fs-14 m-b-40">Banner content here..</p></div>
+                    @if($banner->heading)
+                    <h1 class="text-white m-b-30 fs-60 text-m-size-30">{{$banner->heading}}</h1>
+                    <div class="col-sm-12 col-md-10 col-lg-8 center"><p class="text-white fs-14 m-b-40">{{$banner->sub_heading}}</p></div>
+                    @if($banner->button_text)
                     <div class="">
                       <div class="col-sm-12 col-md-12 col-lg-3 center">
-                        <a class="btn banner-btn col-sm-12" href="/">Get Started Now</a>
+                        <a class="btn banner-btn col-sm-12" href="{{$banner->button_link}}">{{$banner->button_text}}</a>
                       </div>       
-                    </div>  
+                    </div>
+                    @endif
+                    @endif  
                   </div>
                 </div>
               </div>
@@ -27,30 +32,33 @@
           </div>              
         </div>               
       </header>
-
+      @endif
+      @if($products->count())
       <section class="section-top-padding product-section container">
         <h2 class="fs-50 text-center">Our Products</h2>
         <hr class="under-line">
         <div class="row">
-
+          @foreach($products->take(6) as $product)
           <div class="col-md-4 mb-cols">
             <div class="product-div">
-              <a href="">
-                <img src="" alt="">
+              <a href="/product-details/{{$product->id}}">
+                <img src="/public/images/products/{{$product->image}}" alt="{{$product->name}}">
               </a>
-              <a href="">
-                <h2 class="m-t-20"></h2>
+              <a href="/product-details/{{$product->id}}">
+                <h2 class="m-t-20">{{$product->name}}</h2>
               </a>
-                <p class="product-price"></p>
-              <button type="button" class="btn secondary_btn mt40 add-on-cart" addid="">Add to Cart</button>
+                <p class="product-price">@if($product->cross_price)<span style="color: #ce2350;font-weight: 600;text-decoration: line-through;">₹{{$product->cross_price}}</span> - @endif ₹{{$product->price}}</p>
+              <button type="button" class="btn secondary_btn mt40 add-on-cart" addid="{{ $product->id }}">Add to Cart</button>
             </div>
           </div>
-
+          @endforeach
       </div>
       </section>
-
-          <section>
-        <div class="parallax-container" id="para_sec">
+      @endif
+      @if(isset($sectionImg))
+      @if($sectionImg->section == "parallax")
+      <section>
+        <div class="parallax-container" id="para_sec" style="background-image: url(/public/images/bg/{{$sectionImg->bg_img}});">
            <div class="row">
                <div class="col-md-6">
                    <div class="offer-section">
@@ -67,9 +75,9 @@
                <div class="col-md-6">
     <div class="form-box-sec">
         <div class="top-tile">
-            Register
+            Kundli
         </div>
-        <form method="POST" action="" class="parallax-form" autocomplete="off">
+        <form method="POST" action="/get-kundli" class="parallax-form" autocomplete="off">
             <!-- @csrf -->
 
             <label for="fname" class="dis-none">FName</label>
@@ -88,15 +96,7 @@
                     <strong>{{ $errors->first('email') }}</strong>
                 </span>
             @endif -->
-            <label for="password" class="dis-none">Password</label>
-            <input id="password" type="password" class="form-box-input form-control" name="password" placeholder="Password" required>
-
-            <!-- @if ($errors->has('password'))
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $errors->first('password') }}</strong>
-                </span>
-            @endif -->
-
+            
             <label class="dis-none" for="phone">Phone</label>
             <input id="phone" type="number" class="form-box-input form-control" name="phone_no" placeholder="Phone">
             <select name="gender" id="select" required class="form-box-input form-control " style="height: 50px;">
@@ -104,7 +104,12 @@
               <option value="male">Male</option>
               <option value="female">Female</option>
             </select>
- 
+
+            <label for="db" class="dis-none">Date of Birth</label>
+            <input id="db" type="date" class="form-box-input form-control" name="db" placeholder="Date of Birth" required>
+
+            <label for="place" class="dis-none">Birth Place</label>
+            <input id="place" type="text" class="form-box-input form-control" name="place" placeholder="Birth Place" required>
         <button type="submit" class="btn btn-style btn-top" >Submit</button>
         </form>
     </div>
@@ -112,7 +117,9 @@
            </div>
         </div>
     </section>
-
+    @endif
+    @endif
+    @if($astrologers->count())
     <section class="section-top-padding astrologer-section container bgwhite text-center">
         <div class="">
           <h2 class="fs-50 text-center">Our Astrologers</h2>
@@ -135,15 +142,14 @@
           </div>
         </div>
       </section>
-
-  
+      @endif
       <section class="section-top-padding container-fluid">
-        <h2 class="fs-50 text-center">Our Gallery</h2>
+        <h2 class="fs-50 text-center">Our Work</h2>
         <hr class="under-line">
         <!-- Nav tabs -->
           <ul class="nav nav-tabs">
             <li class="nav-item">
-              <a class="nav-link active" data-toggle="tab" href="#profile">Product</a>
+              <a class="nav-link active" data-toggle="tab" href="#gallery">Gallery</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" data-toggle="tab" href="#chat">Chat</a>
@@ -153,102 +159,30 @@
             </li>
           </ul>
                 <div class="tab-content">
-                  <div id="profile" class="tab-pane active">
+                  @if($gellery->count())
+                  <div id="gallery" class="tab-pane active">
                   <div class="row">
+                  @foreach($gellery->take(8) as $item)
                   <div class="col-sm-12 col-md-6 col-lg-3 pad-l-r-0">
-                  <a class="image-with-hover-overlay image-hover-zoom" href="img/portfolio/portfolio-02.jpg">
+                  <a class="image-with-hover-overlay image-hover-zoom" href="{{asset('/public/images/gellery/'.$item->image)}}">
                     <div class="image-hover-overlay background-primary"> 
                       <div class="image-hover-overlay-content text-center padding-2x">
-                        <h2 class="text-thin">Lorem Ipsum Dolor</h2> 
-                        <p>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis. Autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis.</p> 
+                        <h2 class="text-thin">{{ $item->title }}</h2> 
+                        <p>{{ $item->description }}</p> 
                       </div> 
                     </div> 
-                    <img src="img/portfolio/thumb-02.jpg" alt="" title="Portfolio Image 1" />
+                    <img src="{{asset('/public/images/gellery/'.$item->image)}}" alt="{{ $item->title }}" title="{{ $item->title }}" />
                   </a>  
                 </div>
-                <div class="col-sm-12 col-md-6 col-lg-3 pad-l-r-0">
-                  <a class="image-with-hover-overlay image-hover-zoom" href="img/portfolio/video.mp4">
-                    <div class="image-hover-overlay background-primary"> 
-                      <div class="image-hover-overlay-content text-center padding-2x">
-                        <h2 class="text-thin">Lorem Ipsum Dolor</h2> 
-                        <p>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis. Autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis.</p> 
-                      </div> 
-                    </div> 
-                    <img src="img/portfolio/thumb-09.jpg" alt="" title="Portfolio Image 2" />
-                  </a>  
-                </div>
-                <div class="col-sm-12 col-md-6 col-lg-3 pad-l-r-0">
-                  <a class="image-with-hover-overlay image-hover-zoom" href="img/portfolio/portfolio-08.jpg">
-                    <div class="image-hover-overlay background-primary"> 
-                      <div class="image-hover-overlay-content text-center padding-2x">
-                        <h2 class="text-thin">Lorem Ipsum Dolor</h2> 
-                        <p>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis. Autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis.</p> 
-                      </div> 
-                    </div> 
-                    <img src="img/portfolio/thumb-08.jpg" alt="" title="Portfolio Image 3" />
-                  </a>  
-                </div>
-                <div class="col-sm-12 col-md-6 col-lg-3 pad-l-r-0">
-                  <a class="image-with-hover-overlay image-hover-zoom" href="img/portfolio/portfolio-05.jpg">
-                    <div class="image-hover-overlay background-primary"> 
-                      <div class="image-hover-overlay-content text-center padding-2x">
-                        <h2 class="text-thin">Lorem Ipsum Dolor</h2> 
-                        <p>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis. Autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis.</p> 
-                      </div> 
-                    </div> 
-                    <img src="img/portfolio/thumb-05.jpg" alt="" title="Portfolio Image 4" />
-                  </a>  
+                @endforeach
                 </div>
                 </div>
-                </div>
-
+                @endif
 
                 <div id="chat" class="tab-pane">
                   <div class="row">
-                  <div class="col-sm-12 col-md-6 col-lg-3 pad-l-r-0">
-                  <a class="image-with-hover-overlay image-hover-zoom" href="img/portfolio/portfolio-07.jpg">
-                    <div class="image-hover-overlay background-primary"> 
-                      <div class="image-hover-overlay-content text-center padding-2x">
-                        <h2 class="text-thin">Lorem Ipsum Dolor</h2> 
-                        <p>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis. Autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis.</p> 
-                      </div> 
-                    </div> 
-                    <img src="img/portfolio/thumb-07.jpg" alt="" title="Portfolio Image 13" />
-                  </a>  
-                </div>
-                <div class="col-sm-12 col-md-6 col-lg-3 pad-l-r-0">
-                  <a class="image-with-hover-overlay image-hover-zoom" href="img/portfolio/portfolio-13.jpg">
-                    <div class="image-hover-overlay background-primary"> 
-                      <div class="image-hover-overlay-content text-center padding-2x">
-                        <h2 class="text-thin">Lorem Ipsum Dolor</h2> 
-                        <p>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis. Autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis.</p> 
-                      </div> 
-                    </div> 
-                    <img src="img/portfolio/thumb-13.jpg" alt="" title="Portfolio Image 14" />
-                  </a>  
-                </div>
-                <div class="col-sm-12 col-md-6 col-lg-3 pad-l-r-0">
-                  <a class="image-with-hover-overlay image-hover-zoom" href="img/portfolio/video.mp4">
-                    <div class="image-hover-overlay background-primary"> 
-                      <div class="image-hover-overlay-content text-center padding-2x">
-                        <h2 class="text-thin">Lorem Ipsum Dolor</h2> 
-                        <p>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis. Autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis.</p> 
-                      </div> 
-                    </div> 
-                    <img src="img/portfolio/thumb-11.jpg" alt="" title="Portfolio Image 15" />
-                  </a>  
-                </div>
-                <div class="col-sm-12 col-md-6 col-lg-3 pad-l-r-0">
-                  <a class="image-with-hover-overlay image-hover-zoom" href="img/portfolio/portfolio-04.jpg">
-                    <div class="image-hover-overlay background-primary"> 
-                      <div class="image-hover-overlay-content text-center padding-2x">
-                        <h2 class="text-thin">Lorem Ipsum Dolor</h2> 
-                        <p>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis. Autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis.</p> 
-                      </div> 
-                    </div> 
-                    <img src="img/portfolio/thumb-04.jpg" alt="" title="Portfolio Image 16" />
-                  </a>  
-                </div>
+                    <div class="col-sm-12 col-md-6 col-lg-3 pad-l-r-0"> 
+                    </div>
                   </div>
                 </div>
 
@@ -256,59 +190,29 @@
               </div>
               </div>
       </section>
-
+      @if($videos->count())
         <section class="blog bgwhite section-top-padding">
         <div class="container">
             <h2 class="fs-50 text-center">Our Videos</h2>
             <hr class="under-line">
             <div class="row">
-                <div class="col-sm-10 col-md-4 p-b-30 m-l-r-auto">
-
-                    <iframe width="100%" height="100%" src="https://www.youtube.com/embed/keIrUBONCfM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>  
-
+              @foreach ($videos->take(6) as $videoData)
+                <div class="col-sm-12 col-md-4 p-b-30 m-l-r-auto">
+                    <iframe width="100%" height="100%" src="https://www.youtube.com/embed/{{ $videoData->url}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>  
                     <div class="block3-txt p-t-14">
                         <div class="video-heading-title p-b-7">
-                                अपने बारे कुंडली दिखाकर कुछ भी पूछिए और कमाइए पैसे
+                            {{ $videoData->title}}
                         </div>
-
-                        <span class="s-text6">By</span> <span class="s-text7">Pandit Manik Bhardwaj Shashtri Ji</span>
-                        <span class="s-text6">on</span> <span class="s-text7">12 Jul, 2020</span>
+                        <span class="s-text6">By</span> <span class="s-text7">{{ $videoData->auth}}</span>
+                        <span class="s-text6">on</span> <span class="s-text7">{{$videoData->created_at->format('j M, Y')}}</span>
                     </div>
-                    
                 </div>
-                             <div class="col-sm-10 col-md-4 p-b-30 m-l-r-auto">
-
-                        <iframe width="100%" height="100%" src="https://www.youtube.com/embed/U_X2B5ZzfO8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>  
-
-                        <div class="block3-txt p-t-14">
-                            <div class="video-heading-title p-b-7">
-                                    How to talk with Astrologers
-                            </div>
-
-                            <span class="s-text6">By</span> <span class="s-text7">Narender Waraich</span>
-                            <span class="s-text6">on</span> <span class="s-text7">21 Jun, 2020</span>
-                        </div>
-                    
-                </div>
-                             <div class="col-sm-10 col-md-4 p-b-30 m-l-r-auto">
-
-                        <iframe width="100%" height="100%" src="https://www.youtube.com/embed/bpTzSylho_8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>  
-
-                        <div class="block3-txt p-t-14">
-                            <div class="video-heading-title p-b-7">
-                                    How to Register Account
-                            </div>
-
-                            <span class="s-text6">By</span> <span class="s-text7">Narender Waraich</span>
-                            <span class="s-text6">on</span> <span class="s-text7">21 Jun, 2020</span>
-                        </div>
-                    
-                </div>
-                         </div>
+                @endforeach
+              </div>
             <a href="/youtube-videos" class="btn btn-style on-mob-bottom-30" style="margin-top: 20px;width:150px !important;">View More</a>
         </div>
     </section>
-      
+    @endif
   </main>
 
 

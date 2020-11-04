@@ -1,77 +1,48 @@
 @extends('layouts.app')
 @section('content')
 
+<main>
 @if(isset($banner))
-<div class="banner">
-  <img src="{{asset('/public/images/banner/'.$banner->image)}}" alt="{{$banner->heading}}"/>
-  <div class="slider-imge-overlay"></div>
-  <div class="caption text-center">
-    <div class="container">
-      @if($banner->heading)
-      <div class="caption-in">
-        <div class="caption-ins">
-          <h1 class="text-up">{{$banner->heading}}<span>{{$banner->sub_heading}}</span></h1>
-          @if($banner->button_text)
-          <div class="links"> 
-            <a href="{{$banner->button_link}}" class="btns slider-btn"><span>{{$banner->button_text}}</span></a> 
-          </div>
-          @endif
-        </div>
-      </div>
-      @endif
+  <div class="baner-section" style="background-image: url(/public/images/banner/{{$banner->image}});">
+  @if($banner->heading)
+    <div class="baner-content">
+      <h1 class="text-white m-t-b-40 fs-60 lh-1-0">{{$banner->heading}}</h1>
+      <p class="m-b-0 fs-16">{{$banner->sub_heading}}</p>
+      @if($banner->button_text)
+    <div class="links"> 
+      <a href="{{$banner->button_link}}" class="btns slider-btn"><span>{{$banner->button_text}}</span></a> 
     </div>
+    @endif
+    </div>
+   @endif        
   </div>
-</div>
-@else
-<div class="m-t-150"></div>
-@endif
+@endif 
 
-<div class="container">
+      @if(isset($sectionImg))
+        <div class="section-top-padding about-us-section container">
+          @if($sectionImg->section == "main_section") 
+            <h2 class="fs-40">{{$sectionImg->section_heading}}</h2>
+            <hr class="under-line">
+            <p class="m-t-35">{{$sectionImg->section_content}}</p> 
+          @endif 
+            <div class="about-content-section m-t-30">
+              <div class="row">
+                @if($sectionImg->section == "section1")
+                <div class="col-sm-12 col-md-6 col-lg-6">
+                  <img src="img/img-01.jpg" alt="">
+                  <p class="m-t-30">{{$sectionImg->section_content}}</p>
+                </div>
+                @endif 
+                @if($sectionImg->section == "section2")
+                <div class="col-sm-12 col-md-6 col-lg-6">
+                  <img src="img/img-02.jpg" alt="">
+                  <p class="m-t-30">{{$sectionImg->section_content}}</p>
+                </div>
+                @endif 
+              </div>
+            </div>      
+        </div>
+        @endif 
 
-<section class="about-sec1 section-top">
-      <div class="row">
-        <div class="col-md-6 text-center">
-          <img src="/public/images/section/about-us-img.jpg" alt="Pandit" class="icon-img2">
-        </div>
-        <div class="col-md-6 pad-in-section">
-          <div class="heading-title heading-text heading-color">Know About ShivAstroStars</div>
-          <br>
-          <p><strong>|| हरि ॐ नमो वासुदेवाय ||</strong>
-            <br><br>
-            <b>We Offer Services</b>
-            <br>
-            We offer services to help our users to gain insight into their past, present and future and remedies to prevent and cure problems.
-          </p>
-        </div>
-      </div>  
-    </section>
-
-
-    <section class="about-sec2 section-top section-bottom">
-      <div class="row">
-        <div class="col-md-6 col-md-pull-6 pad-in-section">
-          <div class="heading-title heading-text heading-color">Services of ShivAstroStars</div>
-          <br>
-          <b style="color: #fff;">We Offer Services</b>
-          <br>
-          <ul class="service-list">
-            <li>Get your love back</li>
-            <li>Love marriage specialist</li>
-            <li>Love Problem</li>
-            <li>Court Case Problem</li>
-            <li>Relationship Problem</li>
-            <li>Love Issue</li>
-            <li>Manglik Dosh</li>
-            <li>Family Problem</li>
-            <li>Children Problem</li>
-            <li>Kundli Matching Services</li>
-            <li>Husband Wife Disputes</li>
-          </ul>
-        </div>
-        <div class="col-md-6 col-md-push-6 text-center">
-         <img src="/public/images/section/section2.jpg" alt="services" class="icon-img2 on-mob-top-30">
-        </div>
-      </div>  
-    </section>
-</div>
+</main>
 @endsection

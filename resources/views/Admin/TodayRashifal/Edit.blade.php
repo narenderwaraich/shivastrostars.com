@@ -137,6 +137,10 @@
                                     </span>
                                 @endif
                             </div>
+                            <div class="form-group">
+                                <label >Your Name</label>
+                                <input type="text" name="write_by" placeholder="Your Name" value="{{$rashi->write_by}}" class="form-control">
+                            </div>
                         </div>
 
                         <div class="box-footer">

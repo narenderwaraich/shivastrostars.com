@@ -87,13 +87,13 @@ class ProductController extends Controller
     {
       //return $request;
       $validate = $this->validate(request(),[
-          'name'=>'required|string|max:50',
+          'name'=>'required|string|max:80',
           'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
       ]);
             if(!$validate){ 
                  Redirect::back()->withInput();
             }
-        $data = request(['name','price','original_price','qty','category_id','product_types_id','description']);
+        $data = request(['name','price','original_price','cross_price','qty','category_id','product_types_id','description']);
         $file = $request->image;
         $filename = time().'.'.$file->getClientOriginalExtension();
         $file->move(public_path('images/products'), $filename);
@@ -170,35 +170,35 @@ class ProductController extends Controller
                  Redirect::back()->withInput();
             }
         $product = Product::find($id);
-        $data = request(['name','price','original_price','qty','category_id','product_types_id','description']);
+        $data = request(['name','price','original_price','cross_price','qty','category_id','product_types_id','description']);
         if($request->image){
             $file = $request->image;
             $filename = time().'.'.$file->getClientOriginalExtension();
-            $file->move(public_path('public/images/products'), $filename);
+            $file->move(public_path('images/products'), $filename);
             $data['image'] = $filename;
         }
         if($request->image1){
             $file = $request->image1;
             $filename1 = time().'.'.$file->getClientOriginalExtension();
-            $file->move(public_path('public/images/products'), $filename1);
+            $file->move(public_path('images/products'), $filename1);
             $data['image1'] = $filename1;
         }
         if($request->image2){
             $file = $request->image2;
             $filename2 = time().'.'.$file->getClientOriginalExtension();
-            $file->move(public_path('public/images/products'), $filename2);
+            $file->move(public_path('images/products'), $filename2);
             $data['image2'] = $filename2;
         }
         if($request->image3){
             $file = $request->image3;
             $filename3 = time().'.'.$file->getClientOriginalExtension();
-            $file->move(public_path('public/images/products'), $filename3);
+            $file->move(public_path('images/products'), $filename3);
             $data['image3'] = $filename3;
         }
         if($request->image4){
             $file = $request->image4;
             $filename4 = time().'.'.$file->getClientOriginalExtension();
-            $file->move(public_path('public/images/products'), $filename4);
+            $file->move(public_path('images/products'), $filename4);
             $data['image4'] = $filename4;
         }
         //dd($data);

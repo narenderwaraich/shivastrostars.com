@@ -125,6 +125,14 @@ Route::get('/page-setup/edit/{id}', 'AdminController@pageEdit');
 Route::post('/page-setup/update/{id}', 'AdminController@pageUpdate');
 Route::get('/page-setup/delete/{id}', 'AdminController@pageDestroy');
 
+///Page Section
+Route::get('/section-image/show', 'SectionImageController@pageIndex');
+Route::get('/section-image/create', 'SectionImageController@pageCreate');
+Route::post('section-image/create', 'SectionImageController@pageStore');
+Route::get('/section-image/edit/{id}', 'SectionImageController@pageEdit');
+Route::post('/section-image/update/{id}', 'SectionImageController@pageUpdate');
+Route::get('/section-image/delete/{id}', 'SectionImageController@pageDestroy');
+
 // user plan
 //Route::get('/user/plan/edit/{id}','AdminController@userPlanEdit');
 Route::get('/user/plan-active/{id}','AdminController@userPlanActive');
@@ -289,7 +297,7 @@ Route::get('/today-rashifal','RashifalController@todayRashi');
 Route::get('/today-rashifal/{name}','RashifalController@rashifalWithName');
 Route::get('/today-rashi/show','RashifalController@index');
 Route::get('/today-rashi/create','RashifalController@create');
-Route::post('/today-rashi/create','RashifalController@store');
+Route::post('today-rashi/create','RashifalController@store');
 Route::get('/today-rashi/edit/{id}','RashifalController@edit');
 Route::post('/today-rashi/update/{id}','RashifalController@update');
 Route::get('/today-rashi/delete/{id}','RashifalController@destroy');

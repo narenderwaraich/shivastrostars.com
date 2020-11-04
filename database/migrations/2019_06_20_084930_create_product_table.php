@@ -19,7 +19,8 @@ class CreateProductTable extends Migration
             $table->string('name')->unique();
             $table->text('description');
             $table->decimal('price', 10, 2);
-            $table->decimal('sale_price', 10, 2);
+            $table->decimal('sale_price', 10, 2)->nullable();
+            $table->decimal('cross_price', 10, 2)->nullable();
             $table->decimal('original_price', 10, 2);
             $table->string('image')->unique()->nullable();
             $table->string('image1')->unique()->nullable();
