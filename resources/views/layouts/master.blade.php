@@ -11,26 +11,26 @@
     <link rel="apple-touch-icon" href="apple-icon.png">
     <link rel="shortcut icon" href="favicon.ico">
 
-    <link rel="stylesheet" href="/css/normalize.css">
-    <link rel="stylesheet" type="text/css" href="/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/css/font-awesome.min.css">
-    <link rel="stylesheet" href="/css/themify-icons.css">
-    <link rel="stylesheet" href="/css/cs-skin-elastic.css">
-    <link rel="stylesheet" href="/css/admin-style.css">
-    <link rel="stylesheet" href="/css/admin-custom.css">
-    <link rel="stylesheet" href="/css/toastr.min.css">
-   <script src="/jquery/jquery-3.2.1.min.js"></script>
+    <link rel="stylesheet" href="/public/css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="/public/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/public/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/public/css/themify-icons.css">
+    <link rel="stylesheet" href="/public/css/cs-skin-elastic.css">
+    <link rel="stylesheet" href="/public/css/admin-style.css">
+    <link rel="stylesheet" href="/public/css/admin-custom.css">
+    <link rel="stylesheet" href="/public/css/toastr.min.css">
+   <script src="/public/jquery/jquery-3.2.1.min.js"></script>
 </head>
 <body>
 @include('etc.adminNavbar')
 
 @yield('content')
 
-    <script type="text/javascript" src="/bootstrap/js/popper.js"></script>
-    <script src="/js/plugins.js"></script>
-    <script src="/js/main.js"></script>
-    <script src="/js/admin-custom.js"></script>
-    <script src="/js/toastr.min.js"></script>
+    <script type="text/javascript" src="/public/bootstrap/js/popper.js"></script>
+    <script src="/public/js/plugins.js"></script>
+    <script src="/public/js/main.js"></script>
+    <script src="/public/js/admin-custom.js"></script>
+    <script src="/public/js/toastr.min.js"></script>
     {!! Toastr::message() !!}
 </body>
 </html>
