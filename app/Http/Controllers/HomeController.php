@@ -39,9 +39,9 @@ class HomeController extends Controller
         $gellery = Gellery::orderBy('created_at','desc')->paginate(10);
         $astrologers = Astrologer::where('verified','=',2)->get(); //dd($astrologers);
         $sectionImg = SectionImage::where('page_name','=','home')->first(); //dd($sectionImg);
-        // $current = Carbon::now();
-        // $todayDate = $current->format('Y-m-d'); //dd($todayDate);
-        // $rashi = Rashifal::where('today_date','=',$todayDate)->orderBy('created_at','desc')->paginate(1); //dd($rashi);
+        $current = Carbon::now();
+        $todayDate = $current->format('Y-m-d'); //dd($todayDate);
+        $rashi = Rashifal::where('today_date','=',$todayDate)->orderBy('created_at','desc')->paginate(1); //dd($rashi);
         // $yesterday = date("Y-m-d", strtotime( '-1 days' ) );
         // foreach ($covid as $covidData) {
         //     $covid19 = Covid19::whereDate('created_at', $yesterday )->first();
@@ -65,7 +65,7 @@ class HomeController extends Controller
             $subTotal = DB::table("cart_storages")->where('user_id',$userId)->sum('subtotal');       
             return view('index',compact('title','description','rashi'),['banner' => $banner,'products' =>$products, 'videos' => $videos,'cartCollection' =>$cartCollection, 'subTotal' =>$subTotal,'gellery' =>$gellery, 'astrologers' =>$astrologers, 'sectionImg' =>$sectionImg]);
         }else{
-          return view('index',compact('title','description'),['banner' => $banner, 'products' => $products, 'videos' => $videos,'gellery' =>$gellery, 'astrologers' =>$astrologers, 'sectionImg' =>$sectionImg]);  
+          return view('index',compact('title','description','rashi'),['banner' => $banner, 'products' => $products, 'videos' => $videos,'gellery' =>$gellery, 'astrologers' =>$astrologers, 'sectionImg' =>$sectionImg]);  
         }
         
     }
