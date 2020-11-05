@@ -30,6 +30,9 @@ class UserProfileControler extends Controller
         if (isset($banner)) {
             $title = $banner->title;
             $description = $banner->description;
+        }else{
+            $title = "";
+            $description = "";
         }
         if(Auth::check()){
             $userId = Auth::id();

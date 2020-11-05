@@ -250,7 +250,10 @@ class ProductController extends Controller
          if (isset($banner)) {
             $title = $banner->title;
             $description = $banner->description;
-          }
+          }else{
+            $title = "";
+            $description = "";
+        }
          $productData = Product::where('id',$id)->first(); //dd($productData);
          $products = Product::all();
          $data = Review::where('product_id',$id)->get();
@@ -290,6 +293,9 @@ public function productView(){
       if (isset($banner)) {
             $title = $banner->title;
             $description = $banner->description;
+        }else{
+            $title = "";
+            $description = "";
         }
       $category = Category::all();
       $products = Product::latest()->paginate(9);
@@ -309,6 +315,9 @@ public function productView(){
       if (isset($banner)) {
             $title = $banner->title;
             $description = $banner->description;
+        }else{
+            $title = "";
+            $description = "";
         }
       $categoryName = Category::where('name',$name)->first();
       $id = $categoryName->id;

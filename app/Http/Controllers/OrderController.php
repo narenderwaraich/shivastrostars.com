@@ -127,6 +127,9 @@ class OrderController extends Controller
         if (isset($banner)) {
             $title = $banner->title;
             $description = $banner->description;
+        }else{
+            $title = "";
+            $description = "";
         }
         $userId = Auth::id();
         if(Auth::check()){
@@ -144,6 +147,9 @@ class OrderController extends Controller
         if (isset($banner)) {
             $title = $banner->title;
             $description = $banner->description;
+        }else{
+            $title = "";
+            $description = "";
         }
         $userId = Auth::id();
         if(Auth::check()){
@@ -243,6 +249,9 @@ class OrderController extends Controller
         if (isset($banner)) {
             $title = $banner->title;
             $description = $banner->description;
+        }else{
+            $title = "";
+            $description = "";
         }
         $order = Order::find($id);
         if($order->status =="Dispatch"){

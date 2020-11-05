@@ -23,6 +23,7 @@ use App\Order;
 use App\Product;
 use App\BanerSlide;
 use App\Mail\ContactUs;
+use App\SectionImage;
 
 class ContactController extends Controller
 {
@@ -31,14 +32,20 @@ class ContactController extends Controller
         if (isset($banner)) {
             $title = $banner->title;
             $description = $banner->description;
+        }else{
+            $title = "";
+            $description = "";
         }
+        $mainSection = SectionImage::where('page_name','=','about-us')->where('section','=','main_section')->first(); //dd($mainSection);
+        $section1 = SectionImage::where('page_name','=','about-us')->where('section','=','section1')->first(); //dd($section1);
+        $section2 = SectionImage::where('page_name','=','about-us')->where('section','=','section2')->first(); //dd($section2);
         if(Auth::check()){
             $userId = Auth::id();
             $cartCollection = CartStorage::where('user_id',$userId)->get();
             $subTotal = DB::table("cart_storages")->where('user_id',$userId)->sum('subtotal');
-            return view('about',compact('title','description'),['banner' =>$banner, 'cartCollection' =>$cartCollection, 'subTotal' => $subTotal]);
+            return view('about',compact('title','description'),['banner' =>$banner, 'cartCollection' =>$cartCollection, 'subTotal' => $subTotal, 'mainSection' => $mainSection, 'section1' => $section1, 'section2' => $section2]);
         }else{
-            return view('about',compact('title','description'),['banner' =>$banner]);
+            return view('about',compact('title','description'),['banner' =>$banner, 'mainSection' => $mainSection, 'section1' => $section1, 'section2' => $section2]);
         }
     }
     
@@ -47,6 +54,9 @@ class ContactController extends Controller
         if (isset($banner)) {
             $title = $banner->title;
             $description = $banner->description;
+        }else{
+            $title = "";
+            $description = "";
         }
         if(Auth::check()){
             $userId = Auth::id();
@@ -215,7 +225,7 @@ class ContactController extends Controller
    }
 
    public function returnBackReplyMail($mail){
-    $reply ="हमारे ज्योतिष भवन से जुड़ने के लिए धन्यवाद, please app chat box m apna message send kre wha our astrologer hai click on link http://www.astrorightway.com/talk-astro how to chat our asrologers see this video https://www.youtube.com/watch?v=U_X2B5ZzfO8 plz Register your account and talk-astro menu choose http://astrorightway.com/join-member any website help 8847553149 on WhatsApp contact";
+    $reply ="";
      Mail::to($mail)->send(new ContactReply($reply));
    }
 }

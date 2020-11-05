@@ -7,7 +7,7 @@
   @if($banner->heading)
     <div class="baner-content">
       <h1 class="text-white m-t-b-40 fs-60 lh-1-0">{{$banner->heading}}</h1>
-      <p class="m-b-0 fs-16">>{{$banner->sub_heading}}</p>
+      <p class="m-b-0 fs-16">{{$banner->sub_heading}}</p>
       @if($banner->button_text)
     <div class="links"> 
       <a href="{{$banner->button_link}}" class="btns slider-btn"><span>{{$banner->button_text}}</span></a> 

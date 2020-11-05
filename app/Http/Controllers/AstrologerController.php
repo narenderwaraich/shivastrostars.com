@@ -49,7 +49,10 @@ class AstrologerController extends Controller
                     if (isset($banner)) {
                         $title = $banner->title;
                         $description = $banner->description;
-                    }
+                    }else{
+                      $title = "";
+                      $description = "";
+                  }
                   $setting = Setting::where('id',1)->first();  
                   $payment = $setting->astrologer;
                   return view('Astrologer.pay',compact('title','description','banner','payment'));
@@ -91,6 +94,9 @@ class AstrologerController extends Controller
                 if (isset($banner)) {
                     $title = $banner->title;
                     $description = $banner->description;
+                }else{
+                    $title = "";
+                    $description = "";
                 }
             $country_data =DB::table('countries')->select('id','name')->get();
             $state_data = DB::table("states")->select('id','name')->get();

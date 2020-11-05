@@ -199,6 +199,9 @@ class RashifalController extends Controller
         if (isset($banner)) {
             $title = $banner->title .$today;
             $description = $banner->description .$today;
+        }else{
+            $title = "";
+            $description = "";
         }
         $todayDate = $current->format('Y-m-d'); //dd($todayDate);
         //$rashi = Rashifal::where('today_date','=',$todayDate)->orderBy('created_at','desc')->paginate(1); //dd($rashi);

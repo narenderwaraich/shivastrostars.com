@@ -68,6 +68,9 @@ class DirectPaymentController extends Controller
             if (isset($banner)) {
                 $title = $banner->title;
                 $description = $banner->description;
+            }else{
+                $title = "";
+                $description = "";
             }
         return view('direct-payment',compact('banner'));
     }

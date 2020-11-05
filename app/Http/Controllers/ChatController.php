@@ -20,6 +20,7 @@ use App\Astrologer;
 use Mail;
 use App\Mail\MessageNotification;
 use App\Mail\ChatReply;
+use App\SectionImage;
 
 class ChatController extends Controller
 {
@@ -44,10 +45,14 @@ class ChatController extends Controller
             if (isset($banner)) {
                 $title = $banner->title;
                 $description = $banner->description;
+            }else{
+                $title = "";
+                $description = "";
             }
+            $chatSection = SectionImage::where('page_name','=','chat')->where('section','=','chat_bg')->first(); //dd($chatSection);
             // $astrologers = Astrologer::where('verified','=',2)->get(); //dd($astrologers);
             $messages = Chat::where('user_id',Auth::id())->orderBy('created_at','desc')->get(); //dd($messages);
-            return view('chat',compact('title','description','banner','messages'));
+            return view('chat',compact('title','description','banner','messages','chatSection'));
     }
 
     /**
@@ -151,6 +156,9 @@ class ChatController extends Controller
             if (isset($banner)) {
                 $title = $banner->title;
                 $description = $banner->description;
+            }else{
+                $title = "";
+                $description = "";
             }
             $astrologer = Astrologer::where('chat_refer',$refer)->first(); //dd($astrologer);
             $astrologerId = $astrologer->id;

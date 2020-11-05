@@ -57,8 +57,8 @@ class HomeController extends Controller
             $title = $banner->title;
             $description = $banner->description; 
         }else{
-            $title = "Vedic Astrology & Buy Vastu Products Online";
-            $description = "Astrorightway provides free Vedic astrology and kundli remedies. Join our divya Jyoti helping plan and buy vastu astrology products online.";
+            $title = "";
+            $description = "";
         }
         if(Auth::check()){
             $userId = Auth::id();
@@ -77,6 +77,9 @@ class HomeController extends Controller
         if (isset($banner)) {
             $title = $banner->title;
             $description = $banner->description;
+        }else{
+            $title = "";
+            $description = "";
         }
         if(Auth::check()){
             $userId = Auth::id();
@@ -95,6 +98,9 @@ class HomeController extends Controller
         if (isset($banner)) {
             $title = $banner->title;
             $description = $banner->description;
+        }else{
+            $title = "";
+            $description = "";
         }
         if(Auth::check()){
             $userId = Auth::id();

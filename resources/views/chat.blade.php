@@ -19,7 +19,7 @@
 @endif  
 
 
-<section class="chat-background-image-style" style="background-image: url(../images/footer-bg.jpg);">
+<section class="chat-background-image-style" @if(isset($chatSection)) style="background-image: url(../images/{{$chatSection->bg_img}});" @endif>
   <div class="container-fluid chat-background-opacity-bg">
 	    <div class="container chat-box-h">
 
