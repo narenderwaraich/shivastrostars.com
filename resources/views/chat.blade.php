@@ -3,7 +3,7 @@
 
 <main>
 @if(isset($banner))
-  <div class="baner-section" style="background-image: url(/public/images/banner/{{$banner->image}});">
+  <div class="baner-section" style="background-image: url(/public/images/bg/{{$banner->image}});">
   @if($banner->heading)
     <div class="baner-content">
       <h1 class="text-white m-t-b-40 fs-60 lh-1-0">{{$banner->heading}}</h1>

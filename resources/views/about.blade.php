@@ -18,25 +18,25 @@
   </div>
 @endif 
 
-      @if(isset($sectionImg))
+      @if(isset($mainSection))
         <div class="section-top-padding about-us-section container">
-          @if($sectionImg->section == "main_section") 
-            <h2 class="fs-40">{{$sectionImg->section_heading}}</h2>
+          @if($mainSection->section == "main_section") 
+            <h2 class="fs-40">{{$mainSection->section_heading}}</h2>
             <hr class="under-line">
-            <p class="m-t-35">{{$sectionImg->section_content}}</p> 
+            <p class="m-t-35">{{$mainSection->section_content}}</p> 
           @endif 
             <div class="about-content-section m-t-30">
               <div class="row">
-                @if($sectionImg->section == "section1")
+                @if($section1->section == "section1")
                 <div class="col-sm-12 col-md-6 col-lg-6">
-                  <img src="img/img-01.jpg" alt="">
-                  <p class="m-t-30">{{$sectionImg->section_content}}</p>
+                  <img src="/public/images/bg/{$section1->bg_img}}" alt="">
+                  <p class="m-t-30">{{$section1->section_content}}</p>
                 </div>
                 @endif 
-                @if($sectionImg->section == "section2")
+                @if($section2->section == "section2")
                 <div class="col-sm-12 col-md-6 col-lg-6">
-                  <img src="img/img-02.jpg" alt="">
-                  <p class="m-t-30">{{$sectionImg->section_content}}</p>
+                  <img src="/public/images/bg/{{$section2->bg_img}}" alt="">
+                  <p class="m-t-30">{{$section2->section_content}}</p>
                 </div>
                 @endif 
               </div>
