@@ -96,24 +96,22 @@
             Kundli
         </div>
         <form method="POST" action="/get-kundli" class="parallax-form" autocomplete="off">
-            <!-- @csrf -->
-
+            @csrf
             <label for="fname" class="dis-none">FName</label>
             <input  type="text" id="fname" class="form-box-input form-control" name="name" value="" placeholder="Name" required>
-
-            <!-- @if ($errors->has('name'))
+            @if ($errors->has('name'))
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $errors->first('name') }}</strong>
                 </span>
-            @endif -->
+            @endif
             <label for="eaddress" class="dis-none">EAddress</label>
             <input type="email" id="eaddress" class="form-box-input form-control" name="email" value="" placeholder="Email" required>
 
-            <!-- @if ($errors->has('email'))
+            @if ($errors->has('email'))
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $errors->first('email') }}</strong>
                 </span>
-            @endif -->
+            @endif
             
             <label class="dis-none" for="phone">Phone</label>
             <input id="phone" type="number" class="form-box-input form-control" name="phone_no" placeholder="Phone">

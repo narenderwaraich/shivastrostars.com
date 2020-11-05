@@ -1,30 +1,22 @@
 @extends('layouts.app')
 @section('content') 
 
-@if(isset($banner))
-<div class="banner">
-	<img src="{{asset('/public/images/banner/'.$banner->image)}}" alt="{{$banner->heading}}"/>
-	<div class="slider-imge-overlay"></div>
-	<div class="caption text-center">
-		<div class="container">
-			@if($banner->heading)
-			<div class="caption-in">
-				<div class="caption-ins">
-					<h1 class="text-up">{{$banner->heading}}<span>{{$banner->sub_heading}}</span></h1>
-					@if($banner->button_text)
-					<div class="links"> 
-						<a href="{{$banner->button_link}}" class="btns slider-btn"><span>{{$banner->button_text}}</span></a> 
-					</div>
-					@endif
-				</div>
-			</div>
-			@endif
+<main>
+	@if(isset($banner))
+	<div class="baner-section" style="background-image: url(/public/images/banner/{{$banner->image}});">
+	@if($banner->heading)
+	  <div class="baner-content">
+	    <h1 class="text-white m-t-b-40 fs-60 lh-1-0">{{$banner->heading}}</h1>
+	    <p class="m-b-0 fs-16">>{{$banner->sub_heading}}</p>
+	    @if($banner->button_text)
+		<div class="links"> 
+			<a href="{{$banner->button_link}}" class="btns slider-btn"><span>{{$banner->button_text}}</span></a> 
 		</div>
+		@endif
+	  </div>
+	 @endif        
 	</div>
-</div>
-@else
-<div class="m-t-150"></div>
-@endif
+@endif 
 
 	<!-- Product Detail -->
 	<div class="container bgwhite m-t-70">
@@ -206,58 +198,7 @@
 		</div>
 	</div>
 
-
-	<!-- Relate Product -->
-	<section class="relateproduct bgwhite m-t-70">
-		<div class="container">
-			<div class="sec-title p-b-60">
-				<div class="heading-title m-text5 t-center">
-					Related Products
-				</div>
-			</div>
-
-			<!-- Slide2 -->
-			<div class="wrap-slick2">
-				<div class="slick2">
-					@foreach($products as $product)
-					<div class="item-slick2 p-l-15 p-r-15">
-						<!-- Block2 -->
-						<div class="block2">
-							<div class="block2-img wrap-pic-w of-hidden pos-relative block2-labelnew">
-								<img src="{{asset('/public/images/products/'.$product->image)}}" alt="{{$product->name}}">
-
-								<div class="block2-overlay trans-0-4">
-									<a href="#" class="block2-btn-addwishlist hov-pointer trans-0-4" aria-label="add">
-										<i class="icon-wishlist icon_heart_alt" aria-hidden="true"></i>
-										<i class="icon-wishlist icon_heart dis-none" aria-hidden="true"></i>
-									</a>
-
-									<div class="block2-btn-addcart w-size1  trans-0-4">
-										<!-- Button -->
-										<button class="flex-c-m add-on-cart btn btn-style s-text1 trans-0-4" addId="{{ $product->id }}">
-											Add to Cart
-										</button>
-									</div>
-								</div>
-							</div>
-
-							<div class="block2-txt p-t-20">
-								<a href="/product-details/{{$product->id}}" class="block2-name dis-block s-text3 p-b-5">
-									{{$product->name}}
-								</a>
-
-								<span class="block2-price m-text6 p-r-5">
-									₹{{$product->price}}
-								</span>
-							</div>
-						</div>
-					</div>
-					@endforeach
-				</div>
-			</div>
-
-		</div>
-	</section>
+</main>
 
 <script type="text/javascript" src="/public/jquery/jquery-3.2.1.min.js"></script>
  <script> 

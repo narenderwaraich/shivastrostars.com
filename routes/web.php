@@ -313,6 +313,7 @@ Route::get('/pay/payment/field/list', 'DirectPaymentController@fieldPayment');
 Route::get('/pay/payment', 'DirectPaymentController@create');
 Route::post('pay/payment', 'DirectPaymentController@paytmPay');
 Route::post('/direct-payment-call-back', 'DirectPaymentController@paytmCallback');
+Route::post('/get-kundli', 'DirectPaymentController@getKundli');
 
 Route::get('/join-astrologer','AstrologerController@create');
 Route::post('join-astrologer','AstrologerController@store');

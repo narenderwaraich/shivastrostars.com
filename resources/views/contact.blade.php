@@ -28,44 +28,44 @@
             </div>
         <div class="windows-form">
             
-            <form method="POST" action="#">
-               <!--  @csrf -->
+            <form method="POST" action="/contact-us">
+                @csrf
             <div class="form-group">
               <label class="dis-none" for="full-name">Name</label>
               <input class="form-control windows-form-input" type="text" name="name" value="" placeholder="Name" id="full-name">
-        <!-- @if ($errors->has('name'))
+                @if ($errors->has('name'))
                   <span class="invalid-feedback" role="alert">
                      <strong>{{ $errors->first('name') }}</strong>
                   </span>
-                 @endif -->
+                 @endif
             </div>
             <div class="form-group">
               <label class="dis-none" for="mob-no">Mobile</label>
               <input class="form-control windows-form-input" type="number" name="phone_number" value="" placeholder="Mobile" id="mob-no">
-        <!-- @if ($errors->has('phone_number'))
+              @if ($errors->has('phone_number'))
                   <span class="invalid-feedback" role="alert">
                      <strong>{{ $errors->first('phone_number') }}</strong>
                   </span>
-                 @endif -->
+                 @endif
             </div>
              <div class="form-group">
               <label class="dis-none" for="email-address">Email</label>
               <input class="form-control windows-form-input" type="text" name="email" value="" placeholder="Email" id="email-address">
-              <!-- @if ($errors->has('email'))
+              @if ($errors->has('email'))
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $errors->first('email') }}</strong>
                             </span>
-                        @endif -->
+                        @endif
              </div>
             
            <div class="form-group">
             <label class="dis-none" for="query">Message</label>
             <textarea class="form-control windows-form-input" name="message" placeholder="Message" id="query"></textarea>
-              <!-- @if ($errors->has('message'))
+              @if ($errors->has('message'))
                  <span class="invalid-feedback" role="alert">
                      <strong>{{ $errors->first('message') }}</strong>
                  </span>
-             @endif -->
+             @endif
            </div>
             <button type="submit" class="btn btn-style btn-top" >Send</button>
         </form>

@@ -6,7 +6,6 @@ use App\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Hash;
-use App\ProductImage;
 use Storage;
 use File;
 use App\Category;
@@ -253,7 +252,6 @@ class ProductController extends Controller
             $description = $banner->description;
           }
          $productData = Product::where('id',$id)->first(); //dd($productData);
-         $productImage = ProductImage::where('product_id',$id)->get(); //dd($productImage);
          $products = Product::all();
          $data = Review::where('product_id',$id)->get();
         $reviews = json_decode($data,true); //dd($reviews);
@@ -278,9 +276,9 @@ class ProductController extends Controller
             $userId = Auth::id();
             $cartCollection = CartStorage::where('user_id',$userId)->get();
         $subTotal = DB::table("cart_storages")->where('user_id',$userId)->sum('subtotal');
-            return view('product-detail',compact('title','description'),['banner' =>$banner,'productData' =>$productData, 'productImage' =>$productImage, 'products' =>$products, 'cartCollection' =>$cartCollection, 'subTotal' => $subTotal, 'rating' => $rating, 'count' =>$count, 'comments' => $comments]);
+            return view('product-detail',compact('title','description'),['banner' =>$banner,'productData' =>$productData, 'products' =>$products, 'cartCollection' =>$cartCollection, 'subTotal' => $subTotal, 'rating' => $rating, 'count' =>$count, 'comments' => $comments]);
         }else{
-            return view('product-detail',compact('title','description'),['banner' =>$banner,'productData' =>$productData, 'productImage' =>$productImage, 'products' =>$products, 'rating' =>$rating, 'count' =>$count, 'comments' => $comments]);
+            return view('product-detail',compact('title','description'),['banner' =>$banner,'productData' =>$productData, 'products' =>$products, 'rating' =>$rating, 'count' =>$count, 'comments' => $comments]);
         }
         
     }

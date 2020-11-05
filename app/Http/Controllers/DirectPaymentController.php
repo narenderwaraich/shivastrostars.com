@@ -10,6 +10,8 @@ use Toastr;
 use Redirect;
 use Validator;
 use Response;
+use App\BanerSlide;
+use App\GetKundli;
 
 class DirectPaymentController extends Controller
 {
@@ -23,6 +25,38 @@ class DirectPaymentController extends Controller
         //
     }
 
+    public function getKundli(Request $request){
+        $validate = $this->validate($request, [
+                    'name'=>'required|string|max:50',
+                    'email' => 'required',
+                    'db' => 'required',
+                ]);
+                if(!$validate){
+                    Redirect::back()->withInput();
+                }
+                $order_id = uniqid();
+                $data = request(['name','email','phone_no','gender','db','place']);
+                $data['order_id'] = $order_id;
+                GetKundli::create($data);
+                $amount = 51;
+                $order = new DirectPayment();
+                $order->order_id = $order_id;
+                $order->name = $request->name;
+                $order->email = $request->email;
+                $order->phone_no = $request->phone_no;
+                $order->transaction_date = Carbon::now();
+                $order->transaction_status = 'Pending';
+                $order->amount = $amount;
+                $order->transaction_id = '';
+                $order->save();
+                $data_for_request = $this->handlePaytmRequest($order_id, $amount);
+                $paytm_txn_url = env('PAYTM_TXN_URL');
+                $paramList = $data_for_request['paramList'];
+                $checkSum = $data_for_request['checkSum'];
+
+                return view('paytm-merchant-form',compact( 'paytm_txn_url', 'paramList', 'checkSum' ));
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -30,7 +64,12 @@ class DirectPaymentController extends Controller
      */
     public function create()
     { 
-        return view('direct-payment');
+        $banner = BanerSlide::where('page_name','=','direct-payment')->first(); //dd($banner);
+            if (isset($banner)) {
+                $title = $banner->title;
+                $description = $banner->description;
+            }
+        return view('direct-payment',compact('banner'));
     }
 
     /**
@@ -411,6 +450,12 @@ class DirectPaymentController extends Controller
                     $order->transaction_date =  Carbon::now();
                     $order->created_at =  Carbon::now();
                     $order->save();
+
+                    $getKundli = GetKundli::where( 'order_id', $order_id )->first();
+                    if($getKundli){
+                        $data['status'] = 'Success';
+                        $getKundli->update($data);
+                    }
 
                     Toastr::success('Payment Success', 'Success', ["positionClass" => "toast-top-right"]);
                     return redirect()->to('/');

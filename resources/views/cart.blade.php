@@ -1,31 +1,23 @@
 @extends('layouts.app')
 @section('content') 
-@if(isset($banner))
-<div class="banner">
-  <img src="{{asset('/public/images/banner/'.$banner->image)}}" alt="{{$banner->heading}}"/>
-  <div class="slider-imge-overlay"></div>
-  <div class="caption text-center">
-    <div class="container">
-      @if($banner->heading)
-      <div class="caption-in">
-        <div class="caption-ins">
-          <h1 class="text-up">{{$banner->heading}}<span>{{$banner->sub_heading}}</span></h1>
-          @if($banner->button_text)
-          <div class="links"> 
-            <a href="{{$banner->button_link}}" class="btns slider-btn"><span>{{$banner->button_text}}</span></a> 
-          </div>
-          @endif
-        </div>
-      </div>
-      @endif
+<main>
+  @if(isset($banner))
+  <div class="baner-section" style="background-image: url(/public/images/banner/{{$banner->image}});">
+  @if($banner->heading)
+    <div class="baner-content">
+      <h1 class="text-white m-t-b-40 fs-60 lh-1-0">{{$banner->heading}}</h1>
+      <p class="m-b-0 fs-16">>{{$banner->sub_heading}}</p>
+      @if($banner->button_text)
+    <div class="links"> 
+      <a href="{{$banner->button_link}}" class="btns slider-btn"><span>{{$banner->button_text}}</span></a> 
     </div>
+    @endif
+    </div>
+   @endif        
   </div>
-</div>
-@else
-<div class="m-t-150"></div>
-@endif
+@endif 
 
-@if(!empty($storage))
+@if($storage->count())
   <!-- Cart -->
   <section class="cart bgwhite m-t-70">
     <div class="container">
@@ -90,7 +82,7 @@
         <div class="row">
           <div class="col-md-4">
             <div class="shipping-info">
-              <h4>Shipping Address</h4>
+              <h4>Shipping Address <span style="float: right;border: 2px solid #fff;border-radius: 100%;"><a href="/user-profile"><span style="padding: 10px;">@if(empty($userAddress->country))<i style="color:#fff;" class="fa fa-plus" aria-hidden="true"></i>@else <i style="color:#fff;" class="fa fa-pencil" aria-hidden="true"></i>@endif</span></a></span></h4>
               <div class="shipping-chooes">
                 <div class="sc-item">
                   <label>Country<span>@if(empty($userAddress->country))  @else {{$userAddress->country}} @endif</span></label>
@@ -133,8 +125,9 @@
                 <li>Shipping<span>₹<input type="text" name=""  value="" id="shipCharge" readonly style="border:none; width: 100px;"></span></li>
                 <li class="discount-field" style="display: none;">Discount <!-- <b style="font-size: 10px;color: #ce2350;">()</b> --> <span class="discount-price">-₹<input type="text" name="discount"  value="0" id="net_discount" readonly style="border:none; width: 100px;color: #CA0B00;"></span>
                 </li>
-                <li class="total">Total<span>₹<input type="text" name="net_amount"  value="" id="net_amount" readonly style="border:none; color: #ce2350;font-weight: 600; width: 100px;background: transparent;"></span></li>
-                <li class="cart-payment-method">
+                <li class="total">Total<span>₹<input type="text" name="net_amount"  value="" id="net_amount" readonly style="border:none; color: #ce2350;font-weight: 600; width: 100px;background: transparent;"></span>
+                </li>
+                <!-- <li class="cart-payment-method">
                   <div class="form-check-inline">
         <label class="form-check-label radio-btn-labl">
           <input type="radio" class="form-check-input radio-btn-input" name="method" id="cashMethod">Cash
@@ -145,7 +138,7 @@
           <input type="radio" class="form-check-input radio-btn-input" name="method" id="paytmMethod">Paytm
         </label>
       </div>
-                </li>
+                </li> -->
               </ul>
               <button class="site-btn btn-full" type="button" id="checkOut">Proceed to checkout</button>
             </div>
@@ -164,17 +157,19 @@
   @else
   <div style="text-align: center; margin-top: 50px;">Cart is empty!</div>
   @endif
+</main>
   <script> 
     // Submit Form
     $('#checkOut').on('click', function(){
       //$('#checkOutForm').submit();
       var payment = document.getElementById("net_amount").value;
-      if($("#paytmMethod").prop('checked')){
-        window.location.href = '/paytm/'+payment+'/pay';
-        // $('.coupan-form').show();
-      }else{
-        window.location.href = '/cash/'+payment+'/pay';
-      }
+      window.location.href = '/order/paytm/'+payment+'/pay';
+      // if($("#paytmMethod").prop('checked')){
+      //   window.location.href = '/paytm/'+payment+'/pay';
+      //   // $('.coupan-form').show();
+      // }else{
+      //   window.location.href = '/cash/'+payment+'/pay';
+      // }
       
     });
 

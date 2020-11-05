@@ -1,19 +1,21 @@
 @extends('layouts.app')
-@section('content') 
-
-<div class="banner">
-	<img src="{{asset('/public/images/banner/direct-payment.jpg')}}" alt="Payment Banner"/>
-	<div class="slider-imge-overlay"></div>
-	<div class="caption text-center">
-		<div class="container">
-			<div class="caption-in">
-				<div class="caption-ins">
-					<h1 class="text-up">Pay Payment<span>Direct Pay with AstroRightWay</span></h1>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
+@section('content')
+<main>
+@if(isset($banner))
+  <div class="baner-section" style="background-image: url(/public/images/banner/{{$banner->image}});">
+  @if($banner->heading)
+    <div class="baner-content">
+      <h1 class="text-white m-t-b-40 fs-60 lh-1-0">{{$banner->heading}}</h1>
+      <p class="m-b-0 fs-16">{{$banner->sub_heading}}</p>
+      @if($banner->button_text)
+    <div class="links"> 
+      <a href="{{$banner->button_link}}" class="btns slider-btn"><span>{{$banner->button_text}}</span></a> 
+    </div>
+    @endif
+    </div>
+   @endif        
+  </div>
+@endif 
 
 <div class="container" style="margin-top: 50px;">
 	
@@ -58,4 +60,5 @@
         </div>
     </section>
     </div>
+  </main>
 @endsection

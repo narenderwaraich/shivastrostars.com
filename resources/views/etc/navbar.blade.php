@@ -44,7 +44,84 @@
               <li class="{{ (request()->is('contact-us')) ? 'active-item' : '' }}">
                   <a href="/contact-us">Contact Us</a>
               </li>
+              <li class="submenu {{ (request()->is('contact-us')) ? 'active-item' : '' }}">
+                  <a href="#">My Account</a>
+                  <ul>
+                      @guest
+                         <li><a href="/login">Login</a></li>
+                            @if (Route::has('register'))
+                        <li><a href="/register">Register</a></li>
+                            @endif
+                         @else
+                         <li><a href="/user-profile">Profile</a></li>
+                         @if(Auth::user()->role == "astrologer")
+                          <li><a href="/astrologer/dashboard">Astrologer</a></li>
+                         @endif
+                         <li><a href="/user-order">Orders</a></li>
+                         <li class="log-out"><a href="/logout">Logout</a></li>
+                      @endguest  
+                  </ul>
+              </li>
+              <li class="js-show-header-dropdown">
+                <a href="#" class="header-wrapicon2">
+                  <i class="fa fa-shopping-cart header-icon1 js-show-header-dropdown nav-cart-icon"></i>
+                  <span class="header-icons-noti">@if(isset($cartCollection)) {{$cartCollection->count()}} @else 0 @endif</span>
+                </a>
+                                            <!-- Header cart noti -->
+                        <div class="header-cart header-dropdown">
+                            <ul class="header-cart-wrapitem">
+                                @if(isset($cartCollection))
+                                    @foreach($cartCollection as $cart)
+                                <li class="header-cart-item">
+                                    <div class="header-cart-item-img">
+                                        <img src="{{asset('/public/images/products/'.$cart->image)}}" alt="{{$cart->name}}">
+                                    </div>
+
+                                    <div class="header-cart-item-txt">
+                                        <a href="#" class="header-cart-item-name">
+                                            {{$cart->name}}
+                                        </a>
+
+                                        <span class="header-cart-item-info">
+                                            {{$cart->qty}} x ₹{{$cart->price}}
+                                        </span>
+                                    </div>
+                                </li>
+                                     @endforeach
+                                        @else
+                                        <li class="header-cart-item">
+                                            <p>You have no items in your shopping cart</p>
+                                        </li>
+
+                                        @endif
+                            </ul>
+                             @if(isset($cartCollection))
+                            <div class="header-cart-total">
+                                Total: ₹{{$subTotal}}
+                            </div>
+
+                            <div class="header-cart-buttons">
+                                <div class="header-cart-wrapbtn">
+                                    <!-- Button -->
+                                    <a href="/cart" class="btn cart_btn flex-c-m trans-0-4">
+                                        View
+                                    </a>
+                                </div>
+
+                                <div class="header-cart-wrapbtn">
+                                    <!-- Button -->
+                                    <a href="/clear-cart" class="btn cart_btn flex-c-m trans-0-4">
+                                        Clear
+                                    </a>
+                                </div>
+                            </div>
+                            @endif
+                        </div>
+              </li>
+              <li>  
+              </li>
           </ul>
+
         </div>
         </div>
       </nav>
