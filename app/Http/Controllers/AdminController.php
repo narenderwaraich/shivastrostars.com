@@ -428,12 +428,7 @@ class AdminController extends Controller
                 $data['image'] =$imageName;
             }
         }
-        if($request->page_name == "home"){
-            $pageSetup = BanerSlide::create($data);
-        Toastr::success('Banner Add', 'Success', ["positionClass" => "toast-bottom-right"]);
-        return redirect()->to('/page-setup/show');
-        }else{
-          $pageNameCheck = BanerSlide::where('page_name', '=', $request->page_name)->first();
+        $pageNameCheck = BanerSlide::where('page_name', '=', $request->page_name)->first();
           if($pageNameCheck){
             Toastr::error('Page Banner Already Make', 'Sorry', ["positionClass" => "toast-bottom-right"]);
            return redirect()->back(); 
@@ -442,7 +437,6 @@ class AdminController extends Controller
             Toastr::success('Banner Add', 'Success', ["positionClass" => "toast-bottom-right"]);
             return redirect()->to('/page-setup/show'); 
          }   
-        }
         
     }
     public function pageEdit($id)

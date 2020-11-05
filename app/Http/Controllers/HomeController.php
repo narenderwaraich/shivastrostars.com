@@ -38,7 +38,8 @@ class HomeController extends Controller
         $products = Product::orderBy('created_at','desc')->paginate(9);
         $gellery = Gellery::orderBy('created_at','desc')->paginate(10);
         $astrologers = Astrologer::where('verified','=',2)->get(); //dd($astrologers);
-        $sectionImg = SectionImage::where('page_name','=','home')->first(); //dd($sectionImg);
+        $paraSection = SectionImage::where('page_name','=','home')->where('section','=','parallax')->first(); //dd($paraSection);
+        $astroWorkMainSection = SectionImage::where('page_name','=','home')->where('section','=','main_section')->first(); //dd($astroWorkMainSection);
         $current = Carbon::now();
         $todayDate = $current->format('Y-m-d'); //dd($todayDate);
         $rashi = Rashifal::where('today_date','=',$todayDate)->orderBy('created_at','desc')->paginate(1); //dd($rashi);
@@ -63,9 +64,9 @@ class HomeController extends Controller
             $userId = Auth::id();
             $cartCollection = CartStorage::where('user_id',$userId)->get();
             $subTotal = DB::table("cart_storages")->where('user_id',$userId)->sum('subtotal');       
-            return view('index',compact('title','description','rashi'),['banner' => $banner,'products' =>$products, 'videos' => $videos,'cartCollection' =>$cartCollection, 'subTotal' =>$subTotal,'gellery' =>$gellery, 'astrologers' =>$astrologers, 'sectionImg' =>$sectionImg]);
+            return view('index',compact('title','description','rashi'),['banner' => $banner,'products' =>$products, 'videos' => $videos,'cartCollection' =>$cartCollection, 'subTotal' =>$subTotal,'gellery' =>$gellery, 'astrologers' =>$astrologers, 'paraSection' =>$paraSection, 'astroWorkMainSection' =>$astroWorkMainSection]);
         }else{
-          return view('index',compact('title','description','rashi'),['banner' => $banner, 'products' => $products, 'videos' => $videos,'gellery' =>$gellery, 'astrologers' =>$astrologers, 'sectionImg' =>$sectionImg]);  
+          return view('index',compact('title','description','rashi'),['banner' => $banner, 'products' => $products, 'videos' => $videos,'gellery' =>$gellery, 'astrologers' =>$astrologers, 'paraSection' =>$paraSection, 'astroWorkMainSection' =>$astroWorkMainSection]);  
         }
         
     }

@@ -19,13 +19,13 @@
 
 
       @if($products->count())
-      <section class="section-top-padding product-section container-fluid">
+      <section class="section-top-padding product-section container">
         <h2 class="fs-50 text-center">Our Products</h2>
         <hr class="under-line">
         <div class="row">
         	<div class="col-md-3">
         		<div class="siderbar p-r-20 p-r-0-sm">
-					<label class="m-text14 p-b-7 heading-title" for="category">Categories</label>
+					<label class="p-b-7 heading-title" for="category">Categories</label>
 				<select name="" class="form-control select-category" id="category">
 					<option value="/product">All</option>
 					@foreach($category as $categoryData)

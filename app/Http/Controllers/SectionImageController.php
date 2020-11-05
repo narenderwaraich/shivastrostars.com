@@ -56,21 +56,9 @@ class SectionImageController extends Controller
                 $data['bg_img'] =$imageName;
             }
         }
-        if($request->page_name == "home"){
-            $pageSetup = SectionImage::create($data);
-        Toastr::success('Banner Add', 'Success', ["positionClass" => "toast-bottom-right"]);
-        return redirect()->to('/section-image/show');
-        }else{
-          $pageNameCheck = SectionImage::where('page_name', '=', $request->page_name)->first();
-          if($pageNameCheck){
-            Toastr::error('Page Banner Already Make', 'Sorry', ["positionClass" => "toast-bottom-right"]);
-           return redirect()->back(); 
-         }else{
-           $pageSetup = SectionImage::create($data);
-            Toastr::success('Banner Add', 'Success', ["positionClass" => "toast-bottom-right"]);
+        $pageSetup = SectionImage::create($data);
+        Toastr::success('Page Section Added', 'Success', ["positionClass" => "toast-bottom-right"]);
             return redirect()->to('/section-image/show'); 
-         }   
-        }
         
     }
     public function pageEdit($id)
@@ -104,11 +92,11 @@ class SectionImageController extends Controller
                 $data['bg_img'] = $imageName;
             }
             $pageSetup->update($data);
-            Toastr::success('Banner updated', 'Success', ["positionClass" => "toast-bottom-right"]);
+            Toastr::success('Page Section updated', 'Success', ["positionClass" => "toast-bottom-right"]);
             return redirect()->to('/section-image/show');
         }else{
             $pageSetup->update($request->all());
-            Toastr::success('Banner updated', 'Success', ["positionClass" => "toast-bottom-right"]);
+            Toastr::success('Page Section updated', 'Success', ["positionClass" => "toast-bottom-right"]);
             return redirect()->to('/section-image/show');
         }
  
@@ -119,7 +107,7 @@ class SectionImageController extends Controller
     if(Auth::user()->role == "admin"){
         $pageSetup = SectionImage::find($id);
         $pageSetup->delete();
-        Toastr::success('Banner Deleted', 'Success', ["positionClass" => "toast-bottom-right"]);
+        Toastr::success('Page Section Deleted', 'Success', ["positionClass" => "toast-bottom-right"]);
         return redirect()->to('/section-image/show');
         }
 }else{

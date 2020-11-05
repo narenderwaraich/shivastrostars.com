@@ -1,32 +1,25 @@
 @extends('layouts.app')
-@section('content') 
+@section('content')
 
+<main>
 @if(isset($banner))
-<div class="banner">
-	<img src="{{asset('/public/images/banner/'.$banner->image)}}" alt="{{$banner->heading}}"/>
-	<div class="slider-imge-overlay"></div>
-	<div class="caption text-center">
-		<div class="container">
-			@if($banner->heading)
-			<div class="caption-in">
-				<div class="caption-ins">
-					<h1 class="text-up">{{$banner->heading}}<span>{{$banner->sub_heading}}</span></h1>
-					@if($banner->button_text)
-					<div class="links"> 
-						<a href="{{$banner->button_link}}" class="btns slider-btn"><span>{{$banner->button_text}}</span></a> 
-					</div>
-					@endif
-				</div>
-			</div>
-			@endif
-		</div>
-	</div>
-</div>
-@else
-<div class="m-t-150"></div>
-@endif
+  <div class="baner-section" style="background-image: url(/public/images/banner/{{$banner->image}});">
+  @if($banner->heading)
+    <div class="baner-content">
+      <h1 class="text-white m-t-b-40 fs-60 lh-1-0">{{$banner->heading}}</h1>
+      <p class="m-b-0 fs-16">{{$banner->sub_heading}}</p>
+      @if($banner->button_text)
+    <div class="links"> 
+      <a href="{{$banner->button_link}}" class="btns slider-btn"><span>{{$banner->button_text}}</span></a> 
+    </div>
+    @endif
+    </div>
+   @endif        
+  </div>
+@endif  
 
-<section class="chat-background-image-style">
+
+<section class="chat-background-image-style" style="background-image: url(../images/footer-bg.jpg);">
   <div class="container-fluid chat-background-opacity-bg">
 	    <div class="container chat-box-h">
 
@@ -51,20 +44,14 @@
 	    @endif
 	    @if($message->message_status == "Pending")
 	    	<div class="message-chat-plan animation-css">
-	    	<p class="plan-text-msg">Wellcome to AstroRightWay
-तब तक आपका Message पेंडिंग रहेगा जब तक आप कोई वैल्यू प्लान नही चुन लेते,
-आपके द्वारा दी जाने वाली थोड़ी सी फ़ीस ज़रुरतमन्दो के कल्याण के लिए उपयोग की जाती है
-उसके बाद हमारे विद्वान ज्योतिषयों द्वारा देखकर आपके प्रश्नो का उत्तर दिया जाएगा
-	    	    If you want your Reply. Please choose first any chat plan click on Buy</p>
+	    	<p class="plan-text-msg">Please choose first any chat plan click on Buy</p>
 	    		<a href="/buy/plan"><button type="button" class="btn btn-style btn-top" >Buy Now</button></a>
 	    	</div>
 	    @endif
 
 	    @if($message->message_status == "Sent")
 	    	<div class="message-chat-plan animation-css border-px">
-	    	<p class="plan-text-msg">हमारे ज्योतिष भवन से जुड़ने के लिए धन्यवाद,
-आपके प्रश्नो का उत्तर हमारे विद्वान ज्योतिषियों द्वारा जल्द ही देखकर बताया जाएगा
-कृप्या इंतज़ार करें</p>
+	    	<p class="plan-text-msg">Please Wait... (Your Message Reply within 24hrs)</p>
 	    	</div>
 	    @endif
 
@@ -82,13 +69,8 @@
 
                 	</div>
                 	<select name="astrologer" id="astrologer"  class="input-style form-control {{ $errors->has('astrologer') ? ' is-invalid' : '' }}" required style="margin-bottom: 25px;width: 70%;color: #fff;background: transparent;border: 2px solid #ff9e80 !important;">
-                        @if(isset($member))
-                             <option value="1">Guru Ji</option>
-                        @else 
                         <option value="">--Select Astrologer--</option>   
                               <option value="">Guru Ji</option>
-  
-                        @endif
                     </select>
                     @if ($errors->has('astrologer'))
 			               <span class="invalid-feedback full-w" role="alert" style="width: 70%;margin-right: auto;margin-left: auto;">
@@ -114,7 +96,7 @@
 	    </div>
   </div>
 </section>
-
+</main>
 
 <style type="text/css">
 	.footer {

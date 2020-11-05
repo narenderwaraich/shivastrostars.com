@@ -33,6 +33,24 @@
         </div>               
       </header>
       @endif
+
+      @if(isset($astroWorkMainSection))
+      <section class="section-top-padding astrologers-work-section container">
+        @if($astroWorkMainSection->section == "main_section") 
+          <h2 class="fs-50 text-center">{{$astroWorkMainSection->section_heading}}</h2>
+          <hr class="under-line">
+          <div class="about-content-section m-t-30">
+            <div class="row">
+              <div class="col-sm-12 col-md-12 col-lg-12">
+                <img src="/public/images/bg/{{$astroWorkMainSection->bg_img}}" alt="" style="margin: auto;text-align: center;">
+                <p class="m-t-30">{{$astroWorkMainSection->section_content}}</p>
+              </div> 
+            </div>
+          </div>
+        @endif
+      </section>
+      @endif
+
       @if($products->count())
       <section class="section-top-padding product-section container">
         <h2 class="fs-50 text-center">Our Products</h2>
@@ -55,10 +73,10 @@
       </div>
       </section>
       @endif
-      @if(isset($sectionImg))
-      @if($sectionImg->section == "parallax")
+      @if(isset($paraSection))
+      @if($paraSection->section == "parallax")
       <section>
-        <div class="parallax-container" id="para_sec" style="background-image: url(/public/images/bg/{{$sectionImg->bg_img}});">
+        <div class="parallax-container" id="para_sec" style="background-image: url(/public/images/bg/{{$paraSection->bg_img}});">
            <div class="row">
                <div class="col-md-6">
                    <div class="offer-section">
