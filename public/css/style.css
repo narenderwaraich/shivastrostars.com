@@ -1634,3 +1634,12 @@ span.discount-price {
 .user-pro-section .col-form-label {
     color: #18bfef;
 }
+
+.table-title {
+    margin-top: 50px;
+    text-align: center;
+    margin-bottom: 20px;
+    font-weight: 700;
+    font-size: 28px;
+    color: #18bfef;
+}

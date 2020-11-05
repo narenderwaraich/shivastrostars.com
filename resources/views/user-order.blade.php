@@ -1,6 +1,5 @@
 @extends('layouts.app')
 @section('content')
-@if(isset($banner))
 <main>
   @if(isset($banner))
   <div class="baner-section" style="background-image: url(/public/images/banner/{{$banner->image}});">
