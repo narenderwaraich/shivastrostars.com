@@ -29,7 +29,7 @@
               <div class="row">
                 @if($section1->section == "section1")
                 <div class="col-sm-12 col-md-6 col-lg-6">
-                  <img src="/public/images/bg/{$section1->bg_img}}" alt="">
+                  <img src="/public/images/bg/{{$section1->bg_img}}" alt="">
                   <p class="m-t-30">{{$section1->section_content}}</p>
                 </div>
                 @endif 
