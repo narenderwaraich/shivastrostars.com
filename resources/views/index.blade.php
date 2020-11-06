@@ -81,11 +81,10 @@
                <div class="col-md-6">
                    <div class="offer-section">
                        <div class="top-tile">
-                            Offer
+                         Kundli Offer
                        </div>
                        <div class="content">
-                           <p>First user for special offer get 20% discount on first order.
-                            Register Now or apply <span>GET20</span> Coupan Voucher Code.
+                           <p>First user for special offer get 90% discount on apply Get Kundli.
                            </p>
                        </div>
                    </div>
@@ -93,7 +92,7 @@
                <div class="col-md-6">
     <div class="form-box-sec">
         <div class="top-tile">
-            Kundli
+            Get Kundli
         </div>
         <form method="POST" action="/get-kundli" class="parallax-form" autocomplete="off">
             @csrf
@@ -159,10 +158,9 @@
         </div>
       </section>
       @endif
-      <section class="section-top-padding container-fluid">
+<!--       <section class="section-top-padding container-fluid">
         <h2 class="fs-50 text-center">Our Work</h2>
         <hr class="under-line">
-        <!-- Nav tabs -->
           <ul class="nav nav-tabs">
             <li class="nav-item">
               <a class="nav-link active" data-toggle="tab" href="#gallery">Gallery</a>
@@ -174,27 +172,10 @@
               <a class="nav-link" data-toggle="tab" href="#kundli">Kundli</a>
             </li>
           </ul>
-                <div class="tab-content">
-                  @if($gellery->count())
-                  <div id="gallery" class="tab-pane active">
-                  <div class="row">
-                  @foreach($gellery->take(8) as $item)
-                  <div class="col-sm-12 col-md-6 col-lg-3 pad-l-r-0">
-                  <a class="image-with-hover-overlay image-hover-zoom" href="{{asset('/public/images/gellery/'.$item->image)}}">
-                    <div class="image-hover-overlay background-primary"> 
-                      <div class="image-hover-overlay-content text-center padding-2x">
-                        <h2 class="text-thin">{{ $item->title }}</h2> 
-                        <p>{{ $item->description }}</p> 
-                      </div> 
-                    </div> 
-                    <img src="{{asset('/public/images/gellery/'.$item->image)}}" alt="{{ $item->title }}" title="{{ $item->title }}" />
-                  </a>  
-                </div>
-                @endforeach
-                </div>
-                </div>
-                @endif
+              <div class="tab-content">
+                <div id="gallery" class="tab-pane active">
 
+                </div>
                 <div id="chat" class="tab-pane">
                   <div class="row">
                     <div class="col-sm-12 col-md-6 col-lg-3 pad-l-r-0"> 
@@ -205,7 +186,28 @@
               <div id="kundli" class="tab-pane">
               </div>
               </div>
+      </section> -->
+      @if($gellery->count())
+      <section class="section-top-padding container-fluid">
+        <h2 class="fs-50 text-center">Our Gallery</h2>
+        <hr class="under-line">
+          <div class="row">
+            @foreach($gellery->take(8) as $item)
+            <div class="col-sm-12 col-md-6 col-lg-3 pad-l-r-0">
+            <a class="image-with-hover-overlay image-hover-zoom" href="{{asset('/public/images/gellery/'.$item->image)}}">
+              <div class="image-hover-overlay background-primary"> 
+                <div class="image-hover-overlay-content text-center padding-2x">
+                  <h2 class="text-thin">{{ $item->title }}</h2> 
+                  <p>{{ $item->description }}</p> 
+                </div> 
+              </div> 
+              <img src="{{asset('/public/images/gellery/'.$item->image)}}" alt="{{ $item->title }}" title="{{ $item->title }}" />
+            </a>  
+          </div>
+          @endforeach
+          </div>
       </section>
+      @endif
       @if($videos->count())
         <section class="blog bgwhite section-top-padding">
         <div class="container">

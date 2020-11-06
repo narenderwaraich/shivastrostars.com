@@ -1,21 +1,14 @@
 @extends('layouts.app')
 @section('content')
-<div class="banner">
-    <img src="/public/images/banner/register-banner.jpg" alt="Register"/>
-    <div class="slider-imge-overlay"></div>
-    <div class="caption text-center">
-        <div class="container">
-            <!-- <div class="caption-in">
-                <div class="caption-ins">
-                    <h1 class="text-up"><span></span></h1>
-                    <div class="links"> 
-                        <a href="" class="btns slider-btn"><span></span></a> 
-                    </div>
-                </div>
-            </div> -->
-        </div>
-    </div>
-</div>
+<main>
+  <div class="baner-section" style="background-image: url(/public/images/banner/register-banner.jpg);">
+    <div class="baner-content">
+      <h1 class="text-white m-t-b-40 fs-60 lh-1-0"></h1>
+      <p class="m-b-0 fs-16"></p>
+<!--     <div class="links"> 
+      <a href="" class="btns slider-btn"><span></span></a> 
+    </div> -->
+    </div>       
 <div class="container singn-up">
 <div class="windows-firm-Box">
     <div class="top-tile">
@@ -76,6 +69,8 @@
     </div>
 </div>
 </div>
+</div>
+</main>
 <style>
 .btn-style {
     text-transform: uppercase;

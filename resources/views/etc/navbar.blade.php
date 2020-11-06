@@ -44,7 +44,25 @@
               <li class="{{ (request()->is('contact-us')) ? 'active-item' : '' }}">
                   <a href="/contact-us">Contact Us</a>
               </li>
-              <li class="submenu {{ (request()->is('contact-us')) ? 'active-item' : '' }}">
+              <li class="on-desktop-hide on-mob-show">
+                <a href="/cart">Cart</a>
+              </li>
+              @guest
+              <li class="on-desktop-hide on-mob-show">
+                <a href="/login">Login</a>
+              </li>
+               @if (Route::has('register'))
+              <li class="on-desktop-hide on-mob-show"><a href="/register">Register</a></li>
+                  @endif
+               @else
+               <li class="on-desktop-hide on-mob-show"><a href="/user-profile">Profile</a></li>
+               @if(Auth::user()->role == "astrologer")
+                <li class="on-desktop-hide on-mob-show"><a href="/astrologer/dashboard">Astrologer</a></li>
+               @endif
+               <li class="on-desktop-hide on-mob-show"><a href="/user-order">Orders</a></li>
+               <li class="on-desktop-hide on-mob-show log-out"><a href="/logout">Logout</a></li>
+               @endguest
+              <li class="submenu {{ (request()->is('contact-us')) ? 'active-item' : '' }} on-mob-hide">
                   <a href="#">My Account</a>
                   <ul>
                       @guest
@@ -62,7 +80,7 @@
                       @endguest  
                   </ul>
               </li>
-              <li class="js-show-header-dropdown">
+              <li class="js-show-header-dropdown on-mob-hide">
                 <a href="#" class="header-wrapicon2">
                   <i class="fa fa-shopping-cart header-icon1 js-show-header-dropdown nav-cart-icon"></i>
                   <span class="header-icons-noti">@if(isset($cartCollection)) {{$cartCollection->count()}} @else 0 @endif</span>

@@ -1,5 +1,6 @@
 /*custom style seet*/
 /*button hover color #18bfef*/
+/*2nd color #ff9e80*/
 
 body {
   font-size:16px;
@@ -12,7 +13,7 @@ p {
   font-size: 0.85rem;
   line-height: 1.6rem;
 }
-h1, h2, h3, h4, h5, h6{
+/*h1, h2, h3, h4, h5, h6{
   color: #000;                                         
   margin-bottom: 15px;
   margin-top: 0;
@@ -34,7 +35,7 @@ h5{
 }
 h6{
   font-size: 0.9rem;
-}
+}*/
 header.position-absolute {
     position: absolute;
     top: 0;
@@ -156,6 +157,9 @@ nav.fixed .logo-white, .fixed nav .logo-white {
 }
 nav.fixed .logo-dark, .fixed nav .logo-dark {
   display:block;
+}
+.on-desktop-hide{
+    display: none;
 }  
 .background-dark{
     background-color: #002633 !important;
@@ -1159,6 +1163,9 @@ padding-bottom: 120px;
 .nav-cart-icon{
     font-size: 17px;
   color: #ffffff;
+}
+.fixed .nav-cart-icon{
+  color: #18bfef;
 }
 .header-icons-noti {
   display: -webkit-box;

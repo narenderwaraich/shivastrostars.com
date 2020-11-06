@@ -1,29 +1,21 @@
 @extends('layouts.app')
 @section('content')
+<main>
 @if(isset($banner))
-<div class="banner">
-    <img src="{{asset('/public/images/banner/'.$banner->image)}}" alt="{{$banner->heading}}"/>
-    <div class="slider-imge-overlay"></div>
-    <div class="caption text-center">
-        <div class="container">
-            @if($banner->heading)
-            <div class="caption-in">
-                <div class="caption-ins">
-                    <h1 class="text-up">{{$banner->heading}}<span>{{$banner->sub_heading}}</span></h1>
-                    @if($banner->button_text)
-                    <div class="links"> 
-                        <a href="{{$banner->button_link}}" class="btns slider-btn"><span>{{$banner->button_text}}</span></a> 
-                    </div>
-                    @endif
-                </div>
-            </div>
-            @endif
-        </div>
+  <div class="baner-section" style="background-image: url(/public/images/banner/{{$banner->image}});">
+  @if($banner->heading)
+    <div class="baner-content">
+      <h1 class="text-white m-t-b-40 fs-60 lh-1-0">{{$banner->heading}}</h1>
+      <p class="m-b-0 fs-16">{{$banner->sub_heading}}</p>
+      @if($banner->button_text)
+    <div class="links"> 
+      <a href="{{$banner->button_link}}" class="btns slider-btn"><span>{{$banner->button_text}}</span></a> 
     </div>
-</div>
-@else
-<div class="m-t-150"></div>
-@endif
+    @endif
+    </div>
+   @endif        
+  </div>
+@endif 
 <section class="login-section">
 <div class="windows-firm-Box">
     <div class="top-tile">
@@ -64,6 +56,7 @@
     </div>
 </div>
 </section>
+</main>
 <style>
 .btn-style {
     text-transform: uppercase;
