@@ -34,7 +34,7 @@
                 </div>
                 @endif 
                 @if($section2->section == "section2")
-                <div class="col-sm-12 col-md-6 col-lg-6">
+                <div class="col-sm-12 col-md-6 col-lg-6 on-mob-top-30">
                   <img src="/public/images/bg/{{$section2->bg_img}}" alt="">
                   <p class="m-t-30">{{$section2->section_content}}</p>
                 </div>

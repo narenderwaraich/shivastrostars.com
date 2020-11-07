@@ -47,6 +47,7 @@
               </div> 
             </div>
           </div>
+          <a href="tel:+919358027151" class="btn btn-style on-mob-bottom-30" style="margin-top: 20px;width:150px !important;">Call Now</a>
         @endif
       </section>
       @endif

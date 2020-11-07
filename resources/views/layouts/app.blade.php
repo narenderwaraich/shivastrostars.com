@@ -19,6 +19,15 @@
     <link rel="stylesheet" type="text/css" href="/public/css/responsive.css">
     <link rel="stylesheet" href="/public/css/toastr.min.css">
     <script type="text/javascript" src="/public/jquery/jquery-3.2.1.min.js"></script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-171668979-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-171668979-1');
+    </script>
 </head>
 <body>
 
