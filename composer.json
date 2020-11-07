@@ -9,13 +9,15 @@
     "license": "MIT",
     "require": {
         "php": "^7.1.3",
-        "fideloper/proxy": "^4.0",
-        "laravel/framework": "5.8.*",
-        "laravel/tinker": "^1.0",
         "brian2694/laravel-toastr": "^5.5",
+        "eyuva/laravel-whatsapp-btn": "*",
+        "fideloper/proxy": "^4.0",
+        "illuminate/support": "^7.29",
+        "laravel/framework": "5.8.*",
+        "laravel/socialite": "^4.4",
+        "laravel/tinker": "^1.0",
         "laravelcollective/html": "^5.2.0",
-        "qcod/laravel-imageup": "^1.0",
-        "laravel/socialite": "^4.4"
+        "qcod/laravel-imageup": "^1.0"
     },
     "require-dev": {
         "beyondcode/laravel-dump-server": "^1.0",
