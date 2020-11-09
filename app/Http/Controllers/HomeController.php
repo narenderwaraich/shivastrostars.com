@@ -4,11 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use WhatsappBtnFacade;
-use WhatsappBtn;
 use App\Youtube;
 use Auth;
-use Redirect;
 use Carbon\Carbon;
 use App\CartStorage;
 use App\Product;
@@ -63,68 +60,16 @@ class HomeController extends Controller
             $title = "";
             $description = "";
         }
-
-        $num = "9017109900";
-        $msg = "hlo i am here";
-        $opt = ['label' => 'Click to Chat', 'class' => 'btn btn-success'];
-        $whatsappBtn = $this->make($num,$msg,$opt);
-
-
         if(Auth::check()){
             $userId = Auth::id();
             $cartCollection = CartStorage::where('user_id',$userId)->get();
             $subTotal = DB::table("cart_storages")->where('user_id',$userId)->sum('subtotal');       
-            return view('index',compact('title','description','rashi'),['banner' => $banner,'products' =>$products, 'videos' => $videos,'cartCollection' =>$cartCollection, 'subTotal' =>$subTotal,'gellery' =>$gellery, 'astrologers' =>$astrologers, 'paraSection' =>$paraSection, 'astroWorkMainSection' =>$astroWorkMainSection, 'whatsappBtn' => $whatsappBtn]);
+            return view('index',compact('title','description','rashi'),['banner' => $banner,'products' =>$products, 'videos' => $videos,'cartCollection' =>$cartCollection, 'subTotal' =>$subTotal,'gellery' =>$gellery, 'astrologers' =>$astrologers, 'paraSection' =>$paraSection, 'astroWorkMainSection' =>$astroWorkMainSection]);
         }else{
-          return view('index',compact('title','description','rashi'),['banner' => $banner, 'products' => $products, 'videos' => $videos,'gellery' =>$gellery, 'astrologers' =>$astrologers, 'paraSection' =>$paraSection, 'astroWorkMainSection' =>$astroWorkMainSection, 'whatsappBtn' => $whatsappBtn]);  
+          return view('index',compact('title','description','rashi'),['banner' => $banner, 'products' => $products, 'videos' => $videos,'gellery' =>$gellery, 'astrologers' =>$astrologers, 'paraSection' =>$paraSection, 'astroWorkMainSection' =>$astroWorkMainSection]);  
         }
         
     }
-
-    public function chatW(){
-        $num = "9017109900";
-        $msg = "hlo";
-        $opt = ['label' => 'Click to Chat', 'class' => 'btn btn-success'];
-        $data = $this->make($num,$msg,$opt);
-        // $opt = ['label' => 'Click to Chat', 'class' => 'btn btn-success'];
-         //$btn = WhatsappBtn::($num,$msg,$opt);
-         return $data;
-        // return redirect('https://web.whatsapp.com/');
-
-      }
-
-    private $base_url;
-    private $options = [];
-    public function __construct()
-    {
-        $this->base_url = 'https://wa.me';
-        $this->options['label'] = 'Click to Chat';
-        $this->options['class'] = '';
-    }
-
-
-    public function make($number, $message='', $options = array())
-    {
-        $options = array_replace($this->options,$options);
-        $link = $this->link($number, $message);
-
-        return  '<a href="'.$link.'">'.
-                    '<button type="button" class="'.$options['class'].'">'.
-                        $options['label'] .
-                    '</button>'.
-                '</a>';
-    }
-    public function link($number, $message=''){
-        $final_url = $this->base_url . '/'.$this->filterNumber($number);
-        return $final_url . "?" . http_build_query(['text' => $message]);
-    }
-
-    private function filterNumber($number){
-        $number = str_replace(['(',')','-','/','+'],'',$number);
-        $number = (int)$number;
-        return $number;
-    }
-
 
     public function termService()
     {

@@ -345,3 +345,5 @@ Route::get('/astrologer_payments/table/list','AdminController@astrologerPayments
 Route::get('/payments/table/list','AdminController@paymentTable');
 Route::get('/user_addresses/table/list','AdminController@userAddresses');
 Route::get('/user_plans/table/list','AdminController@userPlans');
+
+Route::post('/whatapp','WhatappChatController@store');

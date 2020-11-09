@@ -34,7 +34,6 @@
       </header>
       @endif
 
-      {{$whatsappBtn}}
 
       @if(isset($astroWorkMainSection))
       <section class="section-top-padding astrologers-work-section container">
@@ -49,7 +48,34 @@
               </div> 
             </div>
           </div>
-          <a href="tel:+919358027151" class="btn btn-style on-mob-bottom-30" style="margin-top: 20px;width:150px !important;">Call Now</a>
+
+           <form method="POST" action="/whatapp" autocomplete="off" class="whatapp-form">
+            @csrf
+            <div class="form-group">
+            <label for="name">Name</label>
+            <input  type="text" id="name" class="form-box-input form-control" name="name" value="" placeholder="Name" required>
+            @if ($errors->has('name'))
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $errors->first('name') }}</strong>
+                </span>
+            @endif
+            </div>
+            <div class="form-group">
+            <label for="phone">Phone</label>
+            <input id="phone" type="number" class="form-box-input form-control" name="phone" placeholder="Phone">
+            @if ($errors->has('phone'))
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $errors->first('phone') }}</strong>
+                </span>
+            @endif
+            </div>
+            <div class="form-group">
+            <label for="message">Message</label>
+            <textarea class="form-control" name="message" id="message"  rows="4" placeholder="Message"></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-style on-mob-bottom-30" style="margin-top: 20px;width:150px !important;">Whatapps</button>
+          </form>
         @endif
       </section>
       @endif

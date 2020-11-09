@@ -1650,3 +1650,46 @@ span.discount-price {
     font-size: 28px;
     color: #18bfef;
 }
+
+form.whatapp-form {
+    margin-top: 50px;
+    width: 70%;
+    margin: 50px auto 15px auto;
+}
+.whatapp-form label {
+    color: #18bfef;
+}
+.whatapp-form input {
+    border: 1px solid #18bfef;
+    color: #18bfef;
+    background-color: transparent;
+    height: 50px;
+}
+.whatapp-form input:focus {
+    color: #ff9e80;
+    background-color: transparent;
+    border-color: #ff9e80;
+    outline: 0;
+}
+.whatapp-form input::placeholder{
+    color: #18bfef !important;
+    background-color: transparent !important;
+    outline: 0 !important;
+}
+.whatapp-form textarea {
+    border: 1px solid #18bfef;
+    color: #18bfef;
+    background-color: transparent;
+}
+
+.whatapp-form textarea:focus {
+    color: #ff9e80;
+    background-color: transparent;
+    border-color: #ff9e80;
+    outline: 0;
+}
+.whatapp-form textarea::placeholder{
+    color: #18bfef !important;
+    background-color: transparent !important;
+    outline: 0 !important;
+}
