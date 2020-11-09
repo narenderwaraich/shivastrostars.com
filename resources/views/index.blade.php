@@ -34,6 +34,8 @@
       </header>
       @endif
 
+      {{$whatsappBtn}}
+
       @if(isset($astroWorkMainSection))
       <section class="section-top-padding astrologers-work-section container">
         @if($astroWorkMainSection->section == "main_section") 
