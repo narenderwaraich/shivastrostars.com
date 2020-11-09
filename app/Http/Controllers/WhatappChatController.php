@@ -62,7 +62,7 @@ class WhatappChatController extends Controller
             } 
          $data['order_id'] = $newCustomerID;
          whatappChat::create($data);
-         $num = "+919358027151" //.$request->phone;
+         $num = "+919358027151"; //.$request->phone;
          $msg = $request->message;
          $opt = ['label' => 'Click to Chat', 'class' => 'btn btn-success'];
          $whatsappBtn = $this->make($num,$msg,$opt);
