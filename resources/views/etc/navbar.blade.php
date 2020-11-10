@@ -1,4 +1,4 @@
-<!-- Header Start -->
+Header Start -->
     <header class="position-absolute">    
       <!-- Top Navbar -->
       <nav class="web-top-navbar">
@@ -17,14 +17,7 @@
         </div>
         <div class="menu-nav col-sm-12 col-md-10">
           <ul class="nav-menu-right" id="menu-list">
-            <li class="{{ (request()->is('product')) ? 'active-item' : '' }} {{ (request()->is('product/*')) ? 'active' : '' }}"><a href="/product">Products</a></li>
-    <!--         <li class="submenu">
-              <a href="#">Services</a>
-                <ul>
-                  <li><a href="#">Service A</a></li>
-                  <li><a href="#">Service B</a></li>
-                </ul>
-            </li> -->
+            <!-- <li class="{{ (request()->is('product')) ? 'active-item' : '' }} {{ (request()->is('product/*')) ? 'active' : '' }}"><a href="/product">Products</a></li>
             <li class="{{ (request()->is('gallery')) ? 'active-item' : '' }}">
                 <a href="/gallery">Gallery</a>
             </li>
@@ -33,7 +26,7 @@
             </li>
             <li class="{{ (request()->is('talk-astro')) ? 'active-item' : '' }}">
                   <a href="/talk-astro">Talk to Astro</a>
-              </li>
+              </li> -->
               <!-- <li class="{{ (request()->is('today-rashifal')) ? 'active-item' : '' }}">
                   <a href="/today-rashifal">Today Rashifal</a>
               </li> -->
@@ -44,9 +37,9 @@
               <li class="{{ (request()->is('contact-us')) ? 'active-item' : '' }}">
                   <a href="/contact-us">Contact Us</a>
               </li>
-              <li class="on-desktop-hide on-mob-show">
+              <!-- <li class="on-desktop-hide on-mob-show">
                 <a href="/cart">Cart</a>
-              </li>
+              </li> -->
               @guest
               <li class="on-desktop-hide on-mob-show">
                 <a href="/login">Login</a>
@@ -144,4 +137,4 @@
         </div>
       </nav>
     </header>
-    <!-- end header -->
+    <!-- end header

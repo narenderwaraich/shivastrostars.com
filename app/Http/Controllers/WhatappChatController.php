@@ -20,7 +20,8 @@ class WhatappChatController extends Controller
      */
     public function index()
     {
-        //
+          $getWhatsApp = whatappChat::orderBy('created_at','desc')->paginate(10); //dd($getWhatsApp);
+        return view('Admin.whatsapp-list',['getWhatsApp' =>$getWhatsApp]);
     }
 
     /**
